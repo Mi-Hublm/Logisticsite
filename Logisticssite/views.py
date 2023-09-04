@@ -12,3 +12,9 @@ def blog(request):
 
 def about(request):
     return render(request, "Logisticssite/about.html")
+
+def team(request):
+    return render(request, "Logisticssite/team.html")
+
+def contact(request):
+    return render(request, "Logisticssite/contact.html")
