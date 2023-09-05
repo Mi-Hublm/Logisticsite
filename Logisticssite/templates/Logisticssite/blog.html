@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 
+{% block title %} Blog {% endblock %}
+
+{% block bannertitle %}
+<h3> Our Contact</h3>
+<h1> Contact</h1>
+{% endblock %}
+
 {% block content %}
 
 <p> The blog page</p>
 
-<h1 class ="py-3 md-4 bg-gray "> All your code goes here</h1>
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('contact')
+    };
+
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
 
 {% endblock %}

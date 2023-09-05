@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 
+{% block title %} Contact {% endblock %}
+
+{% block bannertitle %}
+<h3> Our Contact</h3>
+<h1> Contact</h1>
+{% endblock %}
+
 {% block content %}
 
-<h1 class="red"> The Contact page</h1>
+<h2> The Contact page</h2>
 
-<div><i class="ph-duotone ph-baseball"></i></div>
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('contact')
+    };
 
-All your codes goes here
-
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
 {% endblock %}

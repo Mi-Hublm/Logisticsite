@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %} Home {% endblock %}
+
 {% block content %}
 
 <h1 class="red"> The home page</h1>
 
-<div><i class="ph-duotone ph-baseball"></i></div>
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('index')
+    };
 
-<i class="ph-light ph-address-book"></i>
-<i class="ph ph-sunglasses"></i>
-
-
-All your codes goes here
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
 
 {% endblock %}

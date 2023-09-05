@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static%} 
+{% block title %} Team Page {%endblock %}
+ {% block content %}
 
-{% block content %}
-<header class="header-img">
+ <h1>The team page</h1>
 
-</header>
+ <script>
+    window.onload = (event) => {
+        changeBackgroundImage('team')
+    };
 
-
-All your codes goes here
+    window.addEventListener('unload', () => {
+        changeBackgroundImage('index');
+    })
+ </script>
 
 {% endblock %}
