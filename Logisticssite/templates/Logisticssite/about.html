@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %} About {% endblock %}
+
 {% block content %}
 
-<h1 class ="py-3 md-4 bg-gray "> All your code goes here</h1>
+<h1>The about page</h1>
+
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('about')
+    };
+
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
 
 {% endblock %}
