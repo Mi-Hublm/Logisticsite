@@ -4,10 +4,11 @@ function changeBackgroundImage(pageName = null) {
 
   // Define a mapping of page names to background images
   const backgroundImages = {
-    index: '/static/Img/Photo1111.png',
-    team: '/static/Img/photo9.png',
-    about: '/static/Img/photo7777.png',
+    index: '/static/Img/Photo.png',
+    team: '/static/Img/photo1111.png',
+    about: '/static/Img/photo2222.png',
     contact: '/static/Img/photo7777.png',
+    blog: '/static/Img/photo99.png',
   };
 
   // Check if the pageName exists in the backgroundImages object
