@@ -91,6 +91,7 @@ Team page
     width: 100%;
     height: 55vh;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 #banner h1{
     color: #f4f4f4;
