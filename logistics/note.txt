@@ -6,3 +6,21 @@
 }
 
 
+    .chose-img-1{
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+    position: absolute;
+    margin-right: 100px;
+    margin-top: 100px;
+}
+
+.chose-img-2{
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    position: absolute;
+}
+       
+
+

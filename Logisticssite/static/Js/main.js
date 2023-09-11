@@ -20,3 +20,13 @@ function changeBackgroundImage(pageName = null) {
     bannerElement.style.backgroundImage = 'url("/static/Img/Photo1111.png")';
   }
 }
+
+
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader")
+  loader.classList.add("loader-hide");
+  
+  loader.addEventListener("transitioned", () => {
+    document.body.removeChild(loader)
+  })
+})
