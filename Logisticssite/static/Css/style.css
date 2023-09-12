@@ -87,8 +87,8 @@ Team page
 
 
 #banner{
-    background-image: url("/static/Img/Photo1111.png");
-    width: 100%;
+    /* background-image: url("/static/Img/Photo1111.png"); */
+    width: 100vw;
     height: 55vh;
     background-repeat: no-repeat;
     background-size: cover;
