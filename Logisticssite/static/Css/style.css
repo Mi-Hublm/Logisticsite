@@ -241,6 +241,10 @@ padding-bottom: 50px;
     font-weight: bolder;
 }
 
+.chose-content p{
+    font-size: 11px;
+}
+
 
 .ph-user-focus,
 .ph-hourglass-medium{
@@ -257,7 +261,29 @@ padding-bottom: 50px;
 
 .spon-img{
     border: 2px solid #091247;
-    padding: 25px;
-    align-items: center;
-    justify-content: center;
+    padding: 40px;
+    align-content: center;
+}
+
+.sponsores{
+    margin-left: 35px;
+}
+
+.spon-1{
+
+    background-image: url("/static/Img/spons1.jpg");
+}
+
+.social-div{
+    position: relative;
+    background-color: #ffbe34;
+}
+.social-link{
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    list-style: none;
+    position: absolute;
+    left: 200px;
+    top: -30px;
 }
