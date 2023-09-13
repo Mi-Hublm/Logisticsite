@@ -1,0 +1,67 @@
+#foo {
+    width: 498px;
+    height: 60px;
+    gap: 25px;
+    margin-bottom: 500px;
+}
+
+#password { 
+    background-color: transparent;
+    height: 60px;
+    width: 317px; 
+    border: 2px, color #fff;
+    outline: none;
+}
+
+#password:focus {
+    outline: 2px solid #fff;
+}
+
+    
+#head-text {
+    color: white;
+    margin-bottom: 5%;
+    text-align: center;
+    width: auto;
+    height: auto;
+    font-weight: 700;
+    line-height: 40.6px;
+    size: 35px;
+}
+
+#table {
+    background-color: #091242;
+    text-align: center;
+    width: 1200px;
+    height: 395px;
+    top: 709px;
+    left: 360px;
+    gap: 10px;
+    padding: 126px;
+    margin: 100px;    
+}
+
+::placeholder {
+    color: #999999;
+    width: 168px;
+    height: 18px;
+    top: 21px;
+    left: 30px;
+    line-height: 18.4px;
+    size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#pro-btn {
+    left: 342px;
+    width: 156px;
+    height: 60px;
+    background: linear-gradient(94.06deg, #FFFFFF, #FFB629 -1.21%, #FFDA56 58.66%, #FFD7A6 116.84%);
+}
+
+
+
+
+
+
