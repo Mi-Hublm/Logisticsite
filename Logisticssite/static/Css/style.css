@@ -166,6 +166,24 @@ margin-left: 35px;
     margin-bottom: 20px;
 }
 
+.social-link-div{
+    position: relative;
+}
+
+.social-link{
+    display: flex;
+    list-style: none;
+    position: absolute;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    left: 95px;
+    top: -35px;
+    font-size: 26px;
+    color: #091247;
+    background-color: #ffbe34;
+}
+
+
 #team-1{
     position: relative;
     display: inline;
@@ -269,4 +287,9 @@ padding-bottom: 50px;
     padding: 25px;
     align-items: center;
     justify-content: center;
+}
+
+
+.spons-1{
+    background: url("/static/Img/spons1.jpg");
 }
