@@ -1,16 +1,63 @@
 {% extends "base.html" %}
 
+{% load static%}
+
 {% block title %} Blog {% endblock %}
 
 {% block bannertitle %}
-<h3> Our Contact</h3>
-<h1> Contact</h1>
+<div class="container" id="team">
+    <h5 id="team-1">Blog</h5>
+    <h2 id="team-2">Our Latest News</h2>
+</div>
 {% endblock %}
-
 
 {% block content %}
 
-<p> The blog page</p>
+<section class="blog-section">
+    <div class="team-section-head">
+        <h4 id="team-1">Our Blog</h4>
+        <h2>Our Latest News</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <!----Start of first content-->
+
+            <div class="col blog-iteams">
+                <div class="blog-section-img">
+                    <img class="blog-img" src="{% static 'img/blog-img-1.jpg' %}" alt="blog-img"
+                    />
+                </div>
+                <div class="blog-icon">
+                    <i class="ph ph-calendar-blank"></i>
+                    <h4>08</h4>
+                    <p id="month">march</p>
+                </div>
+            </div>
+
+            <div class="col blog-col-2">
+                <div class="blog-content">
+                    <p id="content-1"> Inland freight a worthy <br> solution for your business</p>
+                    <p id="content-2">we are dedicated in creating added value for our customers by implimenting modern technology in our work.</p>
+
+                    <ul>
+                        <li>Urgent transport</li>
+                        <li>Reliable & experinced staffs</li>
+                        <li>Urgent transport soluction</li>
+                        <li>Reliable & experinced staffs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-----End of first content-->
+
+            
+        </div>
+    </div>
+
+
+</section>
 
 <script>
     window.onload = (event) => {

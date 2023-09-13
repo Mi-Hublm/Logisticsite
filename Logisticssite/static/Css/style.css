@@ -189,10 +189,16 @@ margin-left: 35px;
     background-color: #ffbe34;
 }
 
+.team-1-info{
+    background: rgb(0, 0, 0.377);
+    text-transform: capitalize;
+}
+
 #team-1{
     position: relative;
     display: inline;
     text-align: center;
+
 }
 
 #team-1::after{
@@ -287,14 +293,15 @@ padding-bottom: 50px;
     margin-top: 25px;
     padding: 15px;
     margin-bottom: 30px;
+    margin-left: 75px;
 }
 
 
 .spon-img{
-    border: 2px solid #091247;
     padding: 25px;
     width: 20px;
-    height: 150px;
+    height: 170px;
+    border: none;
 }
 
 .spons-content{
@@ -308,4 +315,56 @@ padding-bottom: 50px;
 .spons-img{
     justify-content: center;
     padding: 15px;
+}
+
+
+
+/* Blog page css */
+
+.blog-iteams{
+    position: relative;
+    margin-bottom: 25px;
+}
+
+
+.blog-icon{
+    position: absolute;
+    top: -5px;
+    left: 490px;
+
+}
+
+.blog-icon h4{
+font-weight: bolder;
+font-size: 42px;
+margin-top: -15px;
+margin-left: 5px;
+}
+
+.ph-calendar-blank{
+    font-size: 64px;
+    color: #ffbe34;
+    margin-bottom: 0;
+}
+
+#content-1{
+font-size: 24px;
+font-weight: bold;
+padding: 5px;
+margin: 10px;
+}
+
+#content-2{
+    padding: 5px;
+    margin: 10px;
+    font-size: 24;
+    color: #666c89;
+    font-weight: 600px;   
+}
+
+#month{
+    color: #666c89;
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: bold;
 }
