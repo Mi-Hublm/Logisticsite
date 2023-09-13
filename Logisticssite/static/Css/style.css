@@ -123,12 +123,9 @@ border: none;
 
 
 #banner{
-    background: linear-gradient(to right, rgba(9, 18, 71, 1));
-    width: 100vw;
     height: 55vh;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 #banner h1{
     color: #f4f4f4;
@@ -174,15 +171,23 @@ margin-left: 35px;
     display: flex;
     list-style: none;
     position: absolute;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: row-reverse;
-    left: 95px;
+    left: 55px;
     top: -35px;
     font-size: 26px;
     color: #091247;
-    background-color: #ffbe34;
 }
 
+.card-info{
+    cursor: pointer;
+}
+
+.social-link li i{
+    align-items: center; 
+    padding: 10px;   
+    background-color: #ffbe34;
+}
 
 #team-1{
     position: relative;
@@ -212,7 +217,9 @@ padding: 20px;
     color: #f4f4f4;
 }
 
-
+.card-content h4{
+    padding-top: 10px;
+}
 
 .team-row-1{
 margin-bottom: 30px;
@@ -279,12 +286,26 @@ padding-bottom: 50px;
 .sponsores{
     margin-top: 25px;
     padding: 15px;
+    margin-bottom: 30px;
 }
 
 
 .spon-img{
     border: 2px solid #091247;
     padding: 25px;
-    align-items: center;
+    width: 20px;
+    height: 150px;
+}
+
+.spons-content{
+    font-size: 16px;
+    padding: 4px;
+}
+
+#spons-col-1{
+    background: url('/static/Img/spons1.jpg');
+}
+.spons-img{
     justify-content: center;
+    padding: 15px;
 }

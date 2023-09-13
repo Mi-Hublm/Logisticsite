@@ -18,10 +18,11 @@
         <h2>Meet Expert Team</h2>
     </div>
 
-    <div class=" container">
+    <div class=" container"  data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom">
         <div class="row team-row-1">
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team1.jpg' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
@@ -39,20 +40,36 @@
                   </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team2.jpg' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
+                        <div class="social-link-div">
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                              </ul>
+                        </div>
                         <h4>Kethleen Smith</h4>
                       <p class="card-text">Transport Manager</p>
                     </div>
                   </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team3.jpg' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
+                        <div class="social-link-div">
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                              </ul>
+                        </div>
                         <h4>Rebecca Tylor</h4>
                       <p class="card-text">Cargo Head</p>
                     </div>
@@ -62,30 +79,54 @@
 
         <div class="row team-row-2">
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team4.png' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
+                        <div class="social-link-div">
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                              </ul>
+                        </div>
                         <h4>Ria jackson</h4>
                       <p class="card-text">Operation Head</p>
                     </div>
                   </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team5.png' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
+                        <div class="social-link-div">
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                              </ul>
+                        </div>
                         <h4>Kane William</h4>
                       <p class="card-text">Country Head</p>
                     </div>
                   </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-info" style="width: 18rem;">
                     <img class="team-img" src="{% static 'img/team6.png' %}" alt="team-img"
                 />
                     <div class="card-body card-content">
+                        <div class="social-link-div">
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                              </ul>
+                        </div>
                         <h4>Liser Tylor</h4>
                       <p class="card-text">Finance Manager</p>
                     </div>
@@ -101,7 +142,7 @@
 <section class="why-chose-us">
     <div class="container">
     <div class="row">
-        <div class="col chose-img">
+        <div class="col chose-img" data-aos="fade-right">
             <div class="chose-img-1">
                 <img class="team-img" src="{% static 'img/yus1.png' %}" alt="team-img"
                 />
@@ -115,10 +156,10 @@
 
         </div>
 
-        <div class="col chose-content">
+        <div class="col chose-content" data-aos="fade-left">
             <h5 id="team-1" >About</h5>
             <h3>Why Chose Us</h3>
-            <p>Leverage agile frameworks to provide a robust synopsis for strategy foster
+            <p class="spons-content">Leverage agile frameworks to provide a robust synopsis for strategy foster
             collaborative thinking to further the overall value proposition.</p>
 
             <hr>
@@ -153,7 +194,7 @@
     <div class="container">
         <div class="row">
            
-<div class="col spons-1">
+<div class="col spon-img" id="spons-col-1">
      <!-----
     <img class="team-img" src="{% static 'img/spons1.jpg' %}" alt="team-img"
     />
@@ -161,17 +202,17 @@
 </div>
 
 <div class="col spon-img">
-    <img class="team-img" src="{% static 'img/spons2.png' %}" alt="team-img"
+    <img class="spons-img" src="{% static 'img/spons2.png' %}" alt="spons-img"
     />
 </div>
 
 <div class="col spon-img">
-    <img class="team-img" src="{% static 'img/spons3.png' %}" alt="team-img"
+    <img class="spons-img" src="{% static 'img/spons3.png' %}" alt="spons-img"
     /> 
 </div>
 
 <div class="col spon-img">
-    <img class="team-img" src="{% static 'img/spons4.png' %}" alt="team-img"
+    <img class="spons-img" src="{% static 'img/spons4.png' %}" alt="spons-img"
     />
 </div>
 
