@@ -18,3 +18,6 @@ def team(request):
 
 def contact(request):
     return render(request, "Logisticssite/contact.html")
+
+def protection(request):
+    return render(request, "Logisticssite/protection.html")
