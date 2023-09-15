@@ -23,4 +23,24 @@
 }
        
 
+            <div class="blog-section-img">
+                <img class="blog-img img" src="{% static 'img/blog-img-1.jpg' %}" alt="blog-img"/>
+            </div>
 
+            <div class="blog-icon">
+                <i class="ph ph-calendar-blank"></i>
+                <h4>08</h4>
+                <p id="month">march</p>
+            </div>
+
+            <div class="blog-content ">
+                <p id="content-1"> Inland freight a worthy <br> solution for your business</p>
+                <p id="content-2">we are dedicated in creating added value for our customers by implimenting modern technology in our work.</p>
+        
+                <ul>
+                    <li>Urgent transport</li>
+                    <li>Reliable & experinced staffs</li>
+                    <li>Urgent transport soluction</li>
+                    <li>Reliable & experinced staffs</li>
+                </ul>
+            </div>

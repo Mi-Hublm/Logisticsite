@@ -120,8 +120,6 @@ border: none;
 
 }
 
-
-
 #banner{
     height: 55vh;
     background-repeat: no-repeat;
@@ -176,21 +174,17 @@ margin-left: 35px;
     left: 55px;
     top: -35px;
     font-size: 26px;
-    color: #091247;
-}
-
-.card-info{
-    cursor: pointer;
 }
 
 .social-link li i{
     align-items: center; 
     padding: 10px;   
+    color: #091247;
     background-color: #ffbe34;
 }
 
 .team-1-info{
-    background: rgb(0, 0, 0.377);
+    background-color: rgba(0, 0, 0, 0.418);
     text-transform: capitalize;
 }
 
@@ -218,6 +212,10 @@ margin-top: 35px;
 padding: 20px;
 }
 
+.team-section-head h4{
+    font-size: 18px;
+    }
+
 .card-content{
     background-color: #091247;
     color: #f4f4f4;
@@ -238,8 +236,6 @@ padding-bottom: 50px;
 .why-chose-us{
     margin-bottom: 30px;
 }
-
-
 
 .chose-img-1{
     width: 751px;
@@ -324,21 +320,29 @@ padding-bottom: 50px;
 .blog-iteams{
     position: relative;
     margin-bottom: 25px;
+    display: flex;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
 }
 
+.blog-content {
+    border-left: 1px solid #f4f4f4;
+    margin-left: 8%;
+
+}
 
 .blog-icon{
     position: absolute;
-    top: -5px;
+    top: 10px;
     left: 490px;
 
 }
 
 .blog-icon h4{
-font-weight: bolder;
-font-size: 42px;
-margin-top: -15px;
-margin-left: 5px;
+    font-weight: bolder;
+    font-size: 42px;
+    margin-top: -15px;
+    text-align: center;
 }
 
 .ph-calendar-blank{
@@ -348,10 +352,14 @@ margin-left: 5px;
 }
 
 #content-1{
-font-size: 24px;
-font-weight: bold;
-padding: 5px;
-margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 10px;
+}
+
+#content-1:hover{
+    color: #ffbe34;
 }
 
 #content-2{
@@ -367,4 +375,12 @@ margin: 10px;
     margin-top: -10px;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
 }
+
+.blog-img{
+    width: 453px;
+    height: 308px;
+    border-radius: 2px;
+}
+
