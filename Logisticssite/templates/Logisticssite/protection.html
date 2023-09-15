@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Protection Page {%endblock %}
+
+{% block content%}
+<div class="container">
+    <form id="foo">
+        <div id="table">
+            <h2 id="head-text"> Enter Your Password</h2>
+            <input id="password" type="password" placeholder="Enter Your Password">
+            <button id="pro-btn">submit</button>  
+        </div>
+    </form> 
+</div>
+
+
+
+
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('protection')
+    };
+
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

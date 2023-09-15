@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link href="{% static 'Css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'Css/protection.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
       rel="stylesheet"
@@ -26,6 +27,7 @@
     <title>{% block title %}Logistics website{% endblock %}</title>
   </head>
   <body>
+    <div class="loader"></div>
     <header>
       <nav>
         <div class="top-nav">
@@ -70,7 +72,7 @@
           </div>
         </div>
 
-        <div id="banner">
+        <div id="banner" class="layer">
           <div class="main-nav">
               <ul class="main-nav-links">
                 <li>
@@ -115,27 +117,29 @@
   {% block content %} {% endblock %}
 
     <footer class ="footer" style="background: #091247; color: #fff;">
-      <div class="footer-image">
-        <img id="banner" src="{% static 'img/photo8.png' %}" alt="">
-      </div>
-      <div class="container  p-3 ">
-        <div class="row">
+      
+      <div class="container ">
+        <div class="row g-0 ">
         
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 ">
             <div class="single-box">
-              <img class="mb-5 footer-logo" src="{% static 'img/Logo.png' %}" alt="logo">
+              <div class="footer-title py-3">
+                <img class=" justify-content-center align-items-center" src="{% static 'img/Logo.png' %}" alt="logo">
+              </div>
 
-              <div class=" footer-contact-info py-3">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Qui laboriosam libero </p>
+              <div class=" footer-contact-info py-4 mt-3">
+                <p class="lh-base" >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Qui laboriosam libero
+                </p>
+
                 <ul class="top-nav-content ">
-                  <li>
+                  <li class="text-start">
                     <div id="clock">
-                      <i class="ph ph-envelope text-warning fs-3"></i>
+                      <i class="ph ph-envelope text-warning fs-3 "></i>
                       </div>
                     <p>
                       Email: <br />
-                      contact@logis.com
+                      contact@Logistics.com
                     </p>
                   </li>
 
@@ -154,48 +158,54 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-sm-6">
-            <div class="single-box">
-              <h2 class="mb-5">Pages</h2>
+          <div class="col-lg-3 col-sm-6 ">
+            <div class="single-box ">
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="fs-3 px-5">Pages</h2>
+              </div>
 
-              <ul class="py-3">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Our Project</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Contact</a></li>
+              <ul class="py-3 px-5 mt-3 list-unstyled lh-lg">
+                <li><a href="#" class="text-decoration-none link-light ">About us</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Our Team</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Our Project</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Pricing</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Contact</a></li>
               </ul>
 
             </div>
           </div>
 
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 ">
             <div class="single-box">
-              <h2 class="mb-5">Utility</h2>
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="px-5 fs-3" >Utility</h2>
+              </div>
               
-              <ul class="py-3 ">
-                <li><a href="#">Style Guild</a></li>
-                <li><a href="#">Change Log</a></li>
-                <li><a href="#">License</a></li>
-                <li><a href="#">Protected</a></li>
-                <li><a href="#">Not Found</a></li>
+              <ul class="py-3 mt-3 list-unstyled lh-lg px-5">
+                <li ><a href="#" class="text-decoration-none link-light ">Style Guild</a></li>
+                <li ><a href="#" class="text-decoration-none link-light ">Change Log</a></li>
+                <li ><a href="#" class="text-decoration-none link-light ">License</a></li>
+                <li ><a href="#" class="text-decoration-none link-light ">Protected</a></li>
+                <li ><a href="#" class="text-decoration-none link-light ">Not Found</a></li>
               </ul>
 
             </div>
           </div>
 
-          <div class="col-lg-3 col-sm-6">
+          <div class="col-lg-3 col-sm-6 text-start">
             <div class="single-box">
-              <h2 class="mb-5">Subscribe</h2>
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="fs-3 px-5">Subscribe</h2>
+              </div>
               
-              <div class="py-3 mb-3">
+              <div class="py-3 mt-3 ">
                 <input type="text" class="form-control" placeholder="Email Here" aria-label="Recipient's username">
                 <br>
-                <button class="btn btn-outline-warning" type="button" id="button-addon2">Send Now</button>
+                <button class="btn btn-warning fw-bold " type="button" id="button-addon2">Send Now</button>
 
-                <i class="ph ph-linkedin-logo text-warning fs-4"></i>
-                <i class="ph ph-twitter-logo text-warning fs-4"></i>
-                <i class="ph ph-facebook-logo text-warning fs-4"></i>
+                <i class="ph ph-linkedin-logo text-warning fs-3 p-2"></i>
+                <i class="ph ph-twitter-logo text-warning fs-3 p-2"></i>
+                <i class="ph ph-facebook-logo text-warning fs-3 p-2"></i>
               </div>
 
             </div>
@@ -203,13 +213,19 @@
 
 
         <hr>
-        <div class="row place-item-center fs-7">
-          <div class="col-lg-6 col-sm-6 fw-bold">
+        <div class="row place-item-center small">
+          <div class="col-lg-6 col-sm-6 text-center">
             <p>Copyright TransitFlow | Designed By MIHUB Tech - Powered By WebFlow</p>
           </div>
-          <div class="col-lg-6 col-sm-6 fw-bold">
-            <p>Style Guild &nbsp;&nbsp;&nbsp;&nbsp; License  &nbsp;&nbsp;&nbsp;&nbsp; Change Log  &nbsp;&nbsp;&nbsp;&nbsp; Password</p>
+          <div class="col-lg-6 col-sm-6 text-secondary text-end">
+            <ul class="list-inline ">
+              <li class="list-inline-item">Style Guild &nbsp;&nbsp;</li>
+              <li class="list-inline-item">License  &nbsp;&nbsp;</li>
+              <li class="list-inline-item">Change Log  &nbsp;&nbsp;</li>
+              <li class="list-inline-item">Password  &nbsp;&nbsp;</li>
+            </ul>
           </div>
+
         </div>
       </div>
 
