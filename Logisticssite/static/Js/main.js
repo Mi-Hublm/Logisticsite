@@ -1,3 +1,5 @@
+
+
 function changeBackgroundImage(pageName = null) {
   
   const bannerElement = document.getElementById('banner');
