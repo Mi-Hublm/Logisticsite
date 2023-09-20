@@ -122,8 +122,6 @@ border: none;
 }
 
 
-
-
 #banner{
     height: 55vh;
     background-repeat: no-repeat;
@@ -132,8 +130,6 @@ border: none;
 #banner h1{
     color: #f4f4f4;
 }
-
-
 
 /* footer section by @deboundle1 */
 
@@ -172,6 +168,17 @@ margin-left: 35px;
 
 .social-link-div{
     position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.card:hover .social-link-div {
+    opacity: 1;
 }
 
 .social-link{
@@ -183,23 +190,25 @@ margin-left: 35px;
     left: 55px;
     top: -35px;
     font-size: 26px;
-    color: #091247;
-}
-
-.card-info{
-    cursor: pointer;
 }
 
 .social-link li i{
     align-items: center; 
     padding: 10px;   
+    color: #091247;
     background-color: #ffbe34;
+}
+
+.team-1-info{
+    background-color: rgba(0, 0, 0, 0.418);
+    text-transform: capitalize;
 }
 
 #team-1{
     position: relative;
     display: inline;
     text-align: center;
+
 }
 
 #team-1::after{
@@ -219,6 +228,10 @@ margin-top: 35px;
 padding: 20px;
 }
 
+.team-section-head h4{
+    font-size: 18px;
+    }
+
 .card-content{
     background-color: #091247;
     color: #f4f4f4;
@@ -228,20 +241,9 @@ padding: 20px;
     padding-top: 10px;
 }
 
-.team-row-1{
-margin-bottom: 30px;
-}
-
-.team-row-2{
-padding-bottom: 50px;
-}
-
-.why-chose-us{
+/* .why-chose-us{
     margin-bottom: 30px;
-}
-
-
-
+} */
 
 .chose-img-1{
     width: 751px;
@@ -283,26 +285,19 @@ padding-bottom: 50px;
     font-weight: bolder;
 }
 
-
-.ph-user-focus,
-.ph-hourglass-medium{
-    font-size: 32px;
-    color: #ffbe34;
-}
-
-
 .sponsores{
     margin-top: 25px;
     padding: 15px;
     margin-bottom: 30px;
+    margin-left: 75px;
 }
 
 
 .spon-img{
-    border: 2px solid #091247;
     padding: 25px;
     width: 20px;
-    height: 150px;
+    height: 170px;
+    border: none;
 }
 
 .spons-content{
@@ -318,3 +313,100 @@ padding-bottom: 50px;
     padding: 15px;
 }
 
+/* Blog page css */
+
+.blog-iteams{
+    position: relative;
+    margin-bottom: 25px;
+    display: flex;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.blog-content {
+    border-left: 1px solid #f4f4f4;
+    margin-left: 8%;
+
+}
+
+.blog-icon{
+    position: absolute;
+    top: 10px;
+    left: 400px;
+
+}
+
+.blog-icon h4{
+    font-weight: bolder;
+    font-size: 42px;
+    margin-top: -15px;
+    text-align: center;
+    align-content: center;
+}
+
+
+.ph-calendar-blank{
+    font-size: 64px;
+    color: #ffbe34;
+    margin-bottom: 0;
+}
+
+#content-1{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 10px;
+}
+
+#content-1:hover{
+    color: #ffbe34;
+}
+
+#content-2{
+    padding: 5px;
+    margin: 10px;
+    font-size: 24;
+    color: #666c89;
+    font-weight: 600px;   
+}
+
+#month{
+    color: #666c89;
+    margin-top: -10px;
+    margin-left: -8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+}
+
+.blog-img{
+    width: 344px;
+    height: 250px;
+    border-radius: 2px;
+}
+
+.blog-section-img:hover .hover-div {
+    opacity: 0.7;
+  }
+
+.hover-div p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f4f4f4;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .hover-div {
+    position: absolute;
+    top: 13%;
+    left: 4.5%;
+    width: 300px;
+    height: 200px;
+    background-color: #091247;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
