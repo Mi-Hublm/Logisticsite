@@ -43,7 +43,7 @@
                 <div id="clock">
                   <i class="ph ph-clock"></i>
                   </div>
-                <p>
+                <p class="pt-2">
                   Monday - Sat 9.00 - 18.00 <br />
                   Sunday closed
                 </p>
@@ -53,7 +53,7 @@
                 <div id="clock">
                   <i class="ph ph-envelope-simple"></i>
                 </div>
-                <p>
+                <p class="pt-2">
                   Email <br />
                   Support@transitflow.com
                 </p>
@@ -63,7 +63,7 @@
                 <div id="clock">
                   <i class="ph ph-phone"></i>
                 </div>
-                <p>
+                <p class="pt-2">
                   Call us <br />
                   (00) 112 365 489
                 </p>
@@ -124,7 +124,10 @@
           <div class="col-lg-3 col-sm-6 ">
             <div class="single-box">
               <div class="footer-title py-3">
+
+                <a href="{% url 'index' %}">
                 <img class=" justify-content-center align-items-center" src="{% static 'img/Logo.png' %}" alt="logo">
+                </a>
               </div>
 
               <div class=" footer-contact-info py-4 mt-3">
@@ -132,13 +135,12 @@
                   Qui laboriosam libero
                 </p>
 
-                <ul class="top-nav-content ">
-                  <li class="text-start">
+                <ul class="top-nav-content list-unstyled m-0">
+                  <li class="align-items-center">
                     <div id="clock">
                       <i class="ph ph-envelope text-warning fs-3 "></i>
-                      </div>
-                    <p>
-                      Email: <br />
+                    </div>
+                    <p class="pt-2">Email: <br />
                       contact@Logistics.com
                     </p>
                   </li>
@@ -147,8 +149,7 @@
                     <div id="clock">
                       <i class="ph ph-phone-call text-warning fs-3"></i>
                       </div>
-                    <p>
-                      Call Us: <br />
+                    <p class="pt-2"> Call Us: <br />
                       (+1) 112 365 480
                     </p>
                   </li>
@@ -182,11 +183,10 @@
               </div>
               
               <ul class="py-3 mt-3 list-unstyled lh-lg px-5">
-                <li ><a href="#" class="text-decoration-none link-light ">Style Guild</a></li>
-                <li ><a href="#" class="text-decoration-none link-light ">Change Log</a></li>
-                <li ><a href="#" class="text-decoration-none link-light ">License</a></li>
-                <li ><a href="#" class="text-decoration-none link-light ">Protected</a></li>
-                <li ><a href="#" class="text-decoration-none link-light ">Not Found</a></li>
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Change Log</a></li>
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">License</a></li>
+                <li ><a href="{% url 'protection' %}" class="text-decoration-none link-light ">Protected</a></li>
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Not Found</a></li>
               </ul>
 
             </div>
