@@ -1,0 +1,200 @@
+for blog section
+
+<section class="blog-section">
+    <div class="team-section-head">
+        <h4 id="team-1" class="team-1-info p-1 px-2" >Our Blog</h4>
+        <h2>Our Latest News</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+        <!----Start of first content-->
+            {% for i in posts %}
+        <div class="col blog-iteams container">
+
+            <div class="col-lg-6 p-3 ">
+                <div class="blog-section-img">
+                    <img class="blog-img" src="{{i.image.url}}" alt="blog-img"/>
+                    <div class="hover-div">
+                        <p>Read more</p>
+                    </div>
+                </div>
+                <div class="blog-icon">
+                    <i class="ph ph-calendar-blank"></i>
+                    <h4>{{i.date.day}}</h4>
+                    <p id="month">{{ i.date|date:'F' }}</p>
+                </div>
+            </div>
+
+
+            <div class="col-lg-5  ">
+                <div class=" blog-content p-3 m-3">
+                    <h3 id="content-1"> {{i.title}} </h3>
+                    <p id="content-2">{{i.decs}}</p>
+            
+                    <!-- <ul>
+                        <li>Urgent transport</li>
+                        <li>Reliable & experinced staffs</li>
+                        <li>Urgent transport soluction</li>
+                        <li>Reliable & experinced staffs</li>
+                    </ul> -->
+                </div>
+            </div>
+            
+        </div>
+         
+        <!-----End of first content-->
+        {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+for navbar
+
+
+      <nav>
+        <div class="top-nav">
+          <div class="logo">
+            <a href="{% url 'index' %}">
+              <img class="logo" src="{% static 'img/Logo.png' %}" alt="logo"
+            /></a>
+          </div>
+
+          <div class="top-nav-content">
+            <ul>
+              <li>
+                <div id="clock">
+                  <i class="ph ph-clock"></i>
+                  </div>
+                <p class="pt-2">
+                  Monday - Sat 9.00 - 18.00 <br />
+                  Sunday closed
+                </p>
+              </li>
+
+              <li>
+                <div id="clock">
+                  <i class="ph ph-envelope-simple"></i>
+                </div>
+                <p class="pt-2">
+                  Email <br />
+                  Support@transitflow.com
+                </p>
+              </li>
+
+              <li>
+                <div id="clock">
+                  <i class="ph ph-phone"></i>
+                </div>
+                <p class="pt-2">
+                  Call us <br />
+                  (00) 112 365 489
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="banner">
+          <div class="main-nav">
+              <ul class="main-nav-links">
+                <li>
+                  <a href="{% url 'index' %}">Home |</a>
+                </li>
+                <li>
+                  <a href="{% url 'about' %}">About |</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog' %}">Blog |</a>
+                </li>
+                <li>
+                  <a href="{% url 'team' %}">Team |</a>
+                </li>
+                <li>
+                  <a href="{% url 'contact' %}">Contact</a>
+                </li>
+              </ul>
+      
+              <div class="social">
+                <ul class="main-nav-links ">
+                  <li><i class="ph ph-instagram-logo"></i></li>
+                  <li><i class="ph ph-facebook-logo"></i></li>
+                  <li><i class="ph ph-twitter-logo"></i></li>
+                  <li><i class="ph ph-linkedin-logo"></i></li>
+                  <button id="btn-quote">Request Quote</button>
+                </ul>
+                </div>
+            </div>
+
+        <div class="container">
+          {% block bannertitle %}
+
+
+          {% endblock %}
+          </div>
+
+      </div>
+      </nav>
+
+
+
+      Team secrtion
+      <section class="team-section p-5">
+    <div class="team-section-head">
+
+        <h4 id="team-1" class="team-1-info p-1 px-2" >The Transporters</h4>
+        <h2>Meet Expert Team</h2>
+    </div>
+
+    <div class=" container"  data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom">
+        <div class="row g-3">
+            {% for i in teams %}
+            <div class="col">
+                <div class="card card-info" style="width: 18rem;">
+                    <img class="team-img" src="{{i.image.url}}" alt="team-img"
+                />
+                    <div class="card-body card-content">
+                        <div class="social-link-div">
+
+                            <ul class="social-link">
+                                <li><i class="ph ph-instagram-logo"></i></li>
+                                <li><i class="ph ph-facebook-logo"></i></li>
+                                <li><i class="ph ph-twitter-logo"></i></li>
+                                <li><i class="ph ph-linkedin-logo"></i></li>
+                            </ul>
+
+                        </div>
+
+                        <h4>{{ i.name }}</h4>
+                      <p class="card-text">{{i.position}}</p>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+                  </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+      
+        <div id="banner">
+      <div class="main-nav">
+
+
+
+  </div>
+    </div>

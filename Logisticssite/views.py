@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from django.contrib import messages
+import logging
+# from django.utils.logging import getLogger
 # from django.http import HttpResponse
 # from rest_framework.decorators import api_view
 # from rest_framework.response import Response
 from . models import Post, Team
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -20,10 +25,17 @@ def home(request):
     return render(request,"Logisticssite/index.html", context)
 
 def blog(request):
-    get_all_posts = Post.objects.all().order_by('-date')[:6]
-    context = {
-        'posts': get_all_posts
-    }
+
+    try:    
+        get_all_posts = Post.objects.all().order_by('-date')[:6]
+        context = {
+            'posts': get_all_posts
+        }
+        
+    except Exception as e:
+        logger.error("Faild to fetch data from database: %s", e)
+        messages.error(request, "Check your internet connection and try again.")
+        return render(request, "Logisticssite/blog.html")
     return render(request, "Logisticssite/blog.html", context)
 
 def about(request):
