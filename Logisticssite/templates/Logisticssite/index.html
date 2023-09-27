@@ -611,62 +611,29 @@
         
             <div class="container"  data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                 <div class="row team-row-1 g-3">
+                    {% for i in teams %}
                     <div class="col">
                         <div class="card card-info" style="width: 18rem;">
-                            <img class="team-img" src="{% static 'img/team1.jpg' %}" alt="team-img"/>
-    
+                            <img class="team-img" src="{{i.image.url}}" alt="team-img"
+                        />
                             <div class="card-body card-content">
                                 <div class="social-link-div">
+        
                                     <ul class="social-link">
                                         <li><i class="ph ph-instagram-logo"></i></li>
                                         <li><i class="ph ph-facebook-logo"></i></li>
                                         <li><i class="ph ph-twitter-logo"></i></li>
                                         <li><i class="ph ph-linkedin-logo"></i></li>
-                                      </ul>
+                                    </ul>
+        
                                 </div>
-                                <h4>Jessca Arow</h4>
-                              <p class="card-text">Warehouse Head</p>
+        
+                                <h4>{{ i.name }}</h4>
+                              <p class="card-text">{{i.position}}</p>
                             </div>
                           </div>
                     </div>
-    
-                    <div class="col">
-                        <div class="card card-info" style="width: 18rem;">
-                            <img class="team-img" src="{% static 'img/team2.jpg' %}" alt="team-img"/>
-    
-                            <div class="card-body card-content">
-                                <div class="social-link-div">
-                                    <ul class="social-link">
-                                        <li><i class="ph ph-instagram-logo"></i></li>
-                                        <li><i class="ph ph-facebook-logo"></i></li>
-                                        <li><i class="ph ph-twitter-logo"></i></li>
-                                        <li><i class="ph ph-linkedin-logo"></i></li>
-                                      </ul>
-                                </div>
-                                <h4>Kethleen Smith</h4>
-                              <p class="card-text">Transport Manager</p>
-                            </div>
-                          </div>
-                    </div>
-    
-                    <div class="col">
-                        <div class="card card-info" style="width: 18rem;">
-                            <img class="team-img" src="{% static 'img/team3.jpg' %}" alt="team-img"/>
-    
-                            <div class="card-body card-content">
-                                <div class="social-link-div">
-                                    <ul class="social-link">
-                                        <li><i class="ph ph-instagram-logo"></i></li>
-                                        <li><i class="ph ph-facebook-logo"></i></li>
-                                        <li><i class="ph ph-twitter-logo"></i></li>
-                                        <li><i class="ph ph-linkedin-logo"></i></li>
-                                      </ul>
-                                </div>
-                                <h4>Rebecca Tylor</h4>
-                              <p class="card-text">Cargo Head</p>
-                            </div>
-                          </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -827,7 +794,43 @@
                 <h5 id="team-1" class="team-1-info fs-small py-1 px-2 g-0">Our Blog</h5>
                 <h1 class="team-2-info fw-bold">Our Latest News</h1>
             </div>
-
+                    <!----Start of first content-->
+                    {% for i in posts %}
+                    <div class="col blog-iteams container">
+            
+                        <div class="col-lg-6 p-3 ">
+                            <div class="blog-section-img">
+                                <img class="blog-img" src="{{i.image.url}}" alt="blog-img"/>
+                                <div class="hover-div">
+                                    <p>Read more</p>
+                                </div>
+                            </div>
+                            <div class="blog-icon">
+                                <i class="ph ph-calendar-blank"></i>
+                                <h4>{{i.date.day}}</h4>
+                                <p id="month">{{ i.date|date:'F' }}</p>
+                            </div>
+                        </div>
+            
+            
+                        <div class="col-lg-5  ">
+                            <div class=" blog-content p-3 m-3">
+                                <h3 id="content-1"> {{i.title}} </h3>
+                                <p id="content-2">{{i.decs}}</p>
+                        
+                                <!-- <ul>
+                                    <li>Urgent transport</li>
+                                    <li>Reliable & experinced staffs</li>
+                                    <li>Urgent transport soluction</li>
+                                    <li>Reliable & experinced staffs</li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                     
+                    <!-----End of first content-->
+                    {% endfor %}
             <div class="row">
 
             </div>
