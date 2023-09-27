@@ -8,7 +8,16 @@ from . models import Post, Team
 
 
 def home(request):
-    return render(request,"Logisticssite/index.html")
+    get_all_team = Team.objects.all()[:3]
+
+    get_all_posts = Post.objects.all().order_by('-date')[:3]
+
+    context = {
+        'teams': get_all_team,
+
+        'posts': get_all_posts
+    }
+    return render(request,"Logisticssite/index.html", context)
 
 def blog(request):
     get_all_posts = Post.objects.all().order_by('-date')[:6]
