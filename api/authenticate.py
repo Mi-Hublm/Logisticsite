@@ -1,3 +1,4 @@
+from os import abort
 from flask import Flask, request, jsonify, current_app, render_template
 import secrets
 from flask_argon2 import Argon2
@@ -5,6 +6,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import pyotp
+import logging
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_marshmallow import Marshmallow
