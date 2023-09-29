@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Blog Single {% endblock %}
+
+{% block bannertitle %}
+    <div class="container mt-5 ms-5">
+        <div class="d-flex">
+
+            <div>
+                <i class="ph ph-calendar-blank"></i>
+        
+            </div>
+            <div>
+                <h4 class="fw-bold text-white mb--4 fs-1">{{post.date.day}}</h4>
+                <p class="mt--5">{{ post.date|date:'F' }}</p>
+            </div>
+            
+          </div>
+          <h3 class="text-white fw-bold"> {{post.title}} </h3>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="row">
+        <div class="col d-flex container mt-5">
+            <div class="col-6 ms-5">
+                <h3 class="p-3 m-2 fs-2 text">
+                    {{post.title}}
+                </h3>
+                <p class="p-3 justify-content-around" style="color: #afa9a9;">{{post.decs}}</p>
+                <p class="container p-4 fst-italic text-white text-center" style="background-color: #091247;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet a quidem incidunt quae quasi ea esse dignissimos tempore repellat.</p>
+    
+                <h3 class="fs-2 text">
+                    Safest Logistics Provided With Integrity
+                </h3>
+                <p style="color: #afa9a9;">
+                    {{post.body}}
+                </p>
+    
+                <div class="img align-items-center">
+                    <img class="rounded " src="{{post.image.url}}" alt="blog-img"/>
+                    <p class="text-center px-2 mt-2" style="color: #afa9a9;">The cargo ship</p>
+                </div>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, accusantium ut quisquam deserunt illum enim modi, laudantium sed incidunt ab repellendus voluptates nesciunt eum quidem voluptatum vel sunt aliquam repellat!
+                </p>
+    
+    
+                <div class="social d-flex justify-content-start">
+    
+                        <a href=""><i class="ph ph-facebook-logo"></i></a>
+                        <a href=""><i class="ph ph-instagram-logo"></i></a>
+                        <a href=""><i class="ph ph-twitter-logo"></i></a>
+                        <a href=""><i class="ph ph-facebook-logo"></i></a>    
+
+
+                    <div class="category justify-content-end">
+                        <p class="fs-4 text" style="color: #afa9a9;">Category: Shipping</p>
+                    </div>
+
+                </div>
+
+    
+            </div>
+    
+            <div class="col-4 ms-5 mt-3">
+                    <table class="table">
+                        <h3> category</h3>
+                        <tbody>
+                          <tr>
+                            <td>Shipping</td>
+                            <th scope="row">(1)</th>
+                          </tr>
+    
+                          <tr>
+                            <td>Services</td>
+                            <th scope="row">(2)</th>
+                          </tr>
+    
+                          <tr>
+                            <td>Transport</td>
+                            <th scope="row">(3)</th>
+                          </tr>
+    
+                          <tr>
+                            <td>Wahouse</td>
+                            <th scope="row">(4)</th>
+                          </tr>
+    
+                          <tr>
+                            <td>Transport Industries</td>
+                            <th scope="row">(5)</th>
+                          </tr>
+                        </tbody>
+                      </table>
+    
+                      <div class="help">
+                        <h3>How can we help you</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quas blanditiis quaerat esse, laudantium, illo ducimus magnam sint in perspiciatis officia nulla aperiam provident ad?
+                        </p>
+                        <button>Contact</button>
+                      </div>
+    
+    
+                      <div class="get_in_touch">
+                        <h3>Get in Touch</h3>
+                        <p>Need help ?</p>
+                        <p>(+1) 112 365 480</p>
+                        <hr>
+                        <p>Email</p>
+                        <p>contact@Logistics.com</p>
+                      </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    window.onload = (event) => {
+        changeBackgroundImage('contact')
+    };
+
+    window.addEventListener('unload', () => {
+        changeBackgroundImage();
+    })
+ </script>
+{% endblock %}
