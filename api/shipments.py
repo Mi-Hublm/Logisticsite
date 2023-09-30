@@ -1,8 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Use a proper database in production
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
 
 # Define the Shipment model for the database
@@ -13,7 +18,8 @@ class Shipment(db.Model):
     # Add more shipment attributes as needed
 
 # Create the database tables
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 # Shipments
 @app.route("/api/shipments", methods=["GET"])

@@ -1,4 +1,5 @@
 from os import abort
+import os
 from flask import Flask, request, jsonify, current_app, render_template
 import secrets
 from flask_argon2 import Argon2
@@ -12,25 +13,32 @@ from flask_limiter.util import get_remote_address
 from flask_marshmallow import Marshmallow
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/my_database'
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'your_email_address'
 app.config['MAIL_PASSWORD'] = 'your_email_password'
 
+
 argon2 = Argon2(app)
 jwt = JWTManager(app)
 db = SQLAlchemy(app)
 mail = Mail(app)
+
 limiter = Limiter(
     app,
-    key_func=get_remote_address,
+    # key_func=get_remote_address,
     default_limits=["5 per minute"]
 )
+
 ma = Marshmallow(app)
 csrf = CSRFProtect(app)
 login_manager = LoginManager(app)
@@ -67,7 +75,8 @@ class TwoFactorSecret(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     secret = db.Column(db.String(255), nullable=False)
 
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 # Set up custom error handlers
 
@@ -89,6 +98,7 @@ def internal_server_error(error):
 
 @app.route("/api/authenticate", methods=["POST"])
 @limiter.limit("5 per minute")
+@csrf.exempt
 def authenticate():
     data = request.get_json()
     username = data.get("username")
@@ -97,9 +107,9 @@ def authenticate():
     user = User.query.filter_by(username=username).first()
 
     if user and user.check_password(password):
-        if not user.email_verified:
-            logger.warning(f"Authentication failed: Email address not verified for user {username}")
-            return abort(403, "Email address not verified")
+        # if not user.email_verified:
+        #     logger.warning(f"Authentication failed: Email address not verified for user {username}")
+        #     return abort(403, "Email address not verified")
 
         if user.two_factor_enabled:
             # Get the user's 2FA secret
@@ -118,6 +128,7 @@ def authenticate():
     return abort(401, "Invalid credentials")
 
 @app.route("/api/register", methods=["POST"])
+@csrf.exempt
 def register():
     data = request.get_json()
     username = data.get("username")
@@ -148,7 +159,7 @@ def register():
 
 def generate_email_verification_token():
     # Generate a random and secure token
-    token = secrets.token_hex(token_length)
+    token = secrets.token_hex(8) #These 8 for testing change later
     return token
 
 def send_verification_email(email, token):
