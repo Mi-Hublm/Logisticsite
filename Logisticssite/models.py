@@ -6,7 +6,7 @@ from django.db import models
 class Post(models.Model):
     # author = models.ForeignKey(on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(default="my-slug")
+    slug = models.SlugField
     decs = models.CharField(max_length=500, default="This is a default description.")
     body = models.TextField()
     image = models.FileField(upload_to='blog-post-image')

@@ -2,10 +2,15 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Use a proper database in production
-app.config['SECRET_KEY'] = 'your-secret-key'  # Change this to a strong, random value in production
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")  # Change this to a strong, random value in production
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
@@ -18,7 +23,8 @@ class User(db.Model):
     is_admin = db.Column(db.Boolean, default=False)
 
 # Create the database tables
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 # Authentication and authorization
 @app.route("/api/authenticate", methods=["POST"])
