@@ -1,0 +1,31 @@
+{% extends "base_layout.html" %}
+
+{% block title %} Order {% endblock %}
+
+{% block content %}
+<center>
+<form method="post">
+    {% csrf_token %}
+
+<div>
+    <label>Customer name</label>
+<input type="text" name="customer_name" placeholder="customers name" required>
+</div>
+
+<div>
+    <label>Delivery address</label>
+<input type="text" name="delivery_address" placeholder="delivery address" required>
+</div>
+
+<div>
+    <label>Iteams</label>
+<input type="text" name="items" placeholder="items" required>
+</div>
+
+<button type="submit">Submit</button>
+
+</form>
+</center>
+
+
+{% endblock %}

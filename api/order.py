@@ -77,11 +77,12 @@ def create_order():
     customer_name = data.get("customer_name")
     delivery_address = data.get("delivery_address")
     items = data.get("items")
+  
 
     if not customer_name or not delivery_address or not items:
         return jsonify({"message": "Customer name, delivery address, and items are required"}), 400
 
-    new_order = Order(customer_name=customer_name, delivery_address=delivery_address, items=items)
+    new_order = Order(customer_name=customer_name, delivery_address=delivery_address, items=items, user_id=current_user)
     db.session.add(new_order)
     db.session.commit()
 

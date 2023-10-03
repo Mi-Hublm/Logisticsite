@@ -1,6 +1,6 @@
 from os import abort
 import os
-from flask import Flask, request, jsonify, current_app, render_template
+from flask import Flask, request, jsonify, current_app, render_template, session
 import secrets
 from flask_argon2 import Argon2
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -12,7 +12,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_marshmallow import Marshmallow
 from flask_wtf.csrf import CSRFProtect
-from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user 
 from dotenv import load_dotenv
 
 
@@ -21,12 +21,11 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your_email_address'
-app.config['MAIL_PASSWORD'] = 'your_email_password'
-
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 
 argon2 = Argon2(app)
 jwt = JWTManager(app)
@@ -107,25 +106,25 @@ def authenticate():
     user = User.query.filter_by(username=username).first()
 
     if user and user.check_password(password):
-        # if not user.email_verified:
-        #     logger.warning(f"Authentication failed: Email address not verified for user {username}")
-        #     return abort(403, "Email address not verified")
-
         if user.two_factor_enabled:
-            # Get the user's 2FA secret
             two_factor_secret = TwoFactorSecret.query.filter_by(user_id=user.id).first()
-
-            # Verify the user's 2FA code with a longer time step (e.g., 60 seconds)
-            totp = pyotp.TOTP(two_factor_secret.secret, interval=60)
-            if not totp.verify(data.get("2fa_code")):
-                logger.warning(f"Authentication failed: Invalid 2FA code for user {username}")
-                return abort(401, "Invalid 2FA code")
+            if two_factor_secret:
+                totp = pyotp.TOTP(two_factor_secret.secret, interval=60)
+                if not totp.verify(data.get("2fa_code")):
+                    return jsonify({"error": "Invalid 2FA code"}), 401
+            else:
+                return jsonify({"error": "2FA not configured for this user"}), 400
 
         access_token = create_access_token(identity=username)
         logger.info(f"Authentication successful for user {username}")
         return jsonify({"message": "Authentication successful", "access_token": access_token}), 200
+
     logger.warning(f"Authentication failed: Invalid credentials for user {username}")
-    return abort(401, "Invalid credentials")
+    return jsonify({"error": "Invalid credentials"}), 401
+
+
+
+
 
 @app.route("/api/register", methods=["POST"])
 @csrf.exempt
@@ -150,8 +149,8 @@ def register():
     db.session.commit()
 
     # Send email verification
-    verification_token = generate_email_verification_token()
-    send_verification_email(email, verification_token)
+    # verification_token = generate_email_verification_token()
+    # send_verification_email(email, verification_token)
 
     logger.info(f"Registration successful for user {username}")
     return jsonify({"message": "Registration successful. Check your email for verification instructions."}), 201

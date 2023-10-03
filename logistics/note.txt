@@ -1,0 +1,39 @@
+@app.route("/api/authenticate", methods=["POST"])
+@limiter.limit("5 per minute")
+@csrf.exempt
+def authenticate():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    user = User.query.filter_by(username=username).first()
+
+    if user and user.check_password(password):
+        # if not user.email_verified:
+        #     logger.warning(f"Authentication failed: Email address not verified for user {username}")
+        #     return abort(403, "Email address not verified")
+
+        if user.two_factor_enabled:
+            # Get the user's 2FA secret
+            two_factor_secret = TwoFactorSecret.query.filter_by(user_id=user.id).first()
+
+            # Verify the user's 2FA code with a longer time step (e.g., 60 seconds)
+            totp = pyotp.TOTP(two_factor_secret.secret, interval=60)
+            try:
+                if not totp.verify(data.get("2fa_code")):
+                    logger.warning(f"Authentication failed: Invalid 2FA code for user {username}")
+                    return abort(401, "Invalid 2FA code")
+            except Exception as e:
+                logger.error(f"Authentication failed: {e}")
+                return abort(500, "Internal server error")
+
+        access_token = create_access_token(identity=username)
+        logger.info(f"Authentication successful for user {username}")
+        return jsonify({"message": "Authentication successful", "access_token": access_token}), 200
+    logger.warning(f"Authentication failed: Invalid credentials for user {username}")
+    return abort(401, "Invalid credentials")
+
+
+        if not token:
+            # Handle the case where the token is not available
+            return render(request, 'order.html', {'error_message': 'Token not found'})

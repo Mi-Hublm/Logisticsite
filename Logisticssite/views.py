@@ -3,15 +3,19 @@ from django.contrib import messages
 import logging
 from django.core.paginator import Paginator
 import requests
+import json
+import os
+from django.http import JsonResponse
+from requests import Session
+import jwt
+import datetime
 # from django.utils.logging import getLogger
-# from django.http import HttpResponse
+from django.http import HttpResponse
 # from rest_framework.decorators import api_view
 # from rest_framework.response import Response
 from . models import Post, Team
 
 logger = logging.getLogger(__name__)
-
-# Create your views here.
 
 
 def home(request):
@@ -26,7 +30,6 @@ def home(request):
     }
     return render(request,"Logisticssite/index.html", context)
 
-
 def register(request):
     if request.method == 'POST':
         # Get user registration data from the form
@@ -39,7 +42,6 @@ def register(request):
             'username': username,
             'email': email,
             'password': password
-            
         }
 
         # Make a POST request to the Flask API's registration endpoint
@@ -48,15 +50,23 @@ def register(request):
         # Check the response from the Flask API
         if response.status_code == 201:
             # Registration was successful
-            return redirect('index')  # Redirect to a success page in Django
+
+
+            return redirect('login')  # Redirect to a success page in Django
         else:
-            # Registration failed
-            error_message = response.json().get('message', 'Registration failed')
+            try:
+                # Attempt to parse the JSON response
+                error_message = response.json().get('message', 'Registration failed')
+            except json.JSONDecodeError as e:
+                # Handle JSON decoding error (e.g., empty response)
+                error_message = 'Error: Invalid response from the API'
+
             return render(request, 'Logisticssite/register.html', {'error_message': error_message})
 
     return render(request, "Logisticssite/register.html")
 
 def login(request):
+    authentication_message = None
     if request.method == 'POST':
         # Get user login data from the form
         username = request.POST.get('username')
@@ -74,15 +84,31 @@ def login(request):
         # Check the response from the Flask API
         if response.status_code == 200:
             # Authentication was successful
-            access_token = response.json().get('access_token')
-            # Store the access token or perform additional actions
-            return redirect('blog')  # Redirect to a dashboard page in Django
+            try:
+                access_token = response.json().get('access_token')
+                authentication_message = 'Authentication successful. You are now logged in.'
+                # Store the access token or perform additional actions
+                return redirect('user_dash')  # Redirect to a dashboard page in Django
+            except json.JSONDecodeError as e:
+                # Handle JSON decoding error (e.g., empty response)
+                authentication_message = 'Error: Invalid response from the API'
         else:
-            # Authentication failed
-            error_message = response.json().get('message', 'Authentication failed')
-            return render(request, 'Logisticssite/login.html', {'error_message': error_message})
+            try:
+                # Attempt to parse the JSON response
+                error_message = response.json().get('message', 'Authentication failed')
+                authentication_message = 'Authentication failed. Please check your credentials and try again.'
+            except json.JSONDecodeError as e:
+                # Handle JSON decoding error (e.g., empty response)
+                authentication_message = 'Error: Invalid response from the API'
+
+        return render(request, 'Logisticssite/login.html', {'authentication_message': authentication_message})
 
     return render(request, "Logisticssite/login.html")
+
+
+
+def user_dash(request):
+    return render(request, "Logisticssite/user_dash.html")
 
 
 
@@ -146,3 +172,7 @@ def project(request):
 
 def project_single(request):
     pass
+
+
+def my_404_view(request):
+    return HttpResponse('Logisticssite/errorpage.html', status=404)
