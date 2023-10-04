@@ -87,5 +87,17 @@ def delete_shipment(shipment_id):
 
     return jsonify({"message": "Shipment deleted successfully"})
 
+@app.route("/api/tracking/<string:tracking_number>", methods=["GET"])
+def track_shipment(tracking_number):
+    shipment = Shipment.query.filter_by(tracking_number=tracking_number).first()
+
+    if shipment:
+        return jsonify({"tracking_number": shipment.tracking_number, "status": shipment.status, "location": shipment.location}), 200
+
+    return jsonify({"message": "Tracking number not found"}), 404
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
 if __name__ == "__main__":
     app.run(debug=True)
