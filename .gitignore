@@ -1,6 +1,6 @@
 # Database
 *.sqlite3
-
+/note.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
