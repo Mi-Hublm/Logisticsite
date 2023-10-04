@@ -6,4 +6,6 @@ urlpatterns = [
     # path('', include('social_django.urls', namespace='social')),
     path("", include("Logisticssite.urls")),
     path("shipment/", include("shipment.urls")),
+    path("User/", include("User.urls")),
+    path("Payment/", include("Payment.urls")),
 ]
