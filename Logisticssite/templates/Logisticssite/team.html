@@ -1,174 +1,329 @@
-{% extends "base.html" %} 
-{% load static%} 
-{% block title %} Team Page {%endblock %}
-
-{% block bannertitle %}
+{% extends "base.html" %} {% load static%} {% block title %} Team Page
+{%endblock %} {% block bannertitle %}
 <div class="container" id="team">
-    <h5 class="team-1-info p-1 px-2" id="team-1">Team</h5>
-    <h2 id="team-2">Our Team</h2>
+  <h5 class="team-1-info p-1 px-2" id="team-1">Team</h5>
+  <h2 id="team-2">Our Team</h2>
 </div>
 
-{% endblock %}
- {% block content %}
+{% endblock %} {% block content %}
 
 <section class="team-section p-5">
-    <div class="team-section-head">
+  <div class="team-section-head">
+    <h4 id="team-1" class="team-1-info p-1 px-2">The Transporters</h4>
+    <h2>Meet Expert Team</h2>
+  </div>
 
-        <h4 id="team-1" class="team-1-info p-1 px-2" >The Transporters</h4>
-        <h2>Meet Expert Team</h2>
-    </div>
-
-    <div class=" container"  data-aos="fade-up"
-    data-aos-anchor-placement="center-bottom">
-        <div class="row g-3">
-            {% for i in teams %}
-            <div class="col">
-                <div class="card card-info" style="width: 18rem;">
-                    <img class="team-img" src="{{i.image.url}}" alt="team-img"
-                />
-                    <div class="card-body card-content">
-                        <div class="social-link-div">
-
-                            <ul class="social-link">
-                                <li><i class="ph ph-instagram-logo"></i></li>
-                                <li><i class="ph ph-facebook-logo"></i></li>
-                                <li><i class="ph ph-twitter-logo"></i></li>
-                                <li><i class="ph ph-linkedin-logo"></i></li>
-                            </ul>
-
-                        </div>
-
-                        <h4>{{ i.name }}</h4>
-                      <p class="card-text">{{i.position}}</p>
-                    </div>
-                  </div>
+  <div
+    class="container"
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+  >
+    <div class="row g-3 flex-wrap">
+      {% for i in teams %}
+      <div class="col-md-4">
+        <div class="card card-info" style="width: 18rem">
+          <img class="team-img" src="{{i.image.url}}" alt="team-img" />
+          <div class="card-body card-content">
+            <div class="social-link-div">
+              <ul class="social-link">
+                <li><i class="ph ph-instagram-logo"></i></li>
+                <li><i class="ph ph-facebook-logo"></i></li>
+                <li><i class="ph ph-twitter-logo"></i></li>
+                <li><i class="ph ph-linkedin-logo"></i></li>
+              </ul>
             </div>
-            {% endfor %}
-                  </div>
-            </div>
+
+            <h4>{{ i.name }}</h4>
+            <p class="card-text">{{i.position}}</p>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
-
-
+  </div>
 </section>
-
 
 <section class="why-chose-us mb-30">
-    <div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col chose-img" data-aos="fade-right">
+      <!-- <div class="col chose-img" data-aos="fade-right">
             <div class="chose-img-1">
-                <img class="team-img" src="{% static 'img/yus1.png' %}" alt="team-img"
+                <img class="team-img-1 img-fluid" src="{% static 'img/yus1.png' %}" alt="team-img"
                 />
-
-                <div class="chose-img-2">
-                
-                    <img class="team-img" src="{% static 'img/yus2.png' %}" alt="team-img"
-                    />
-                    </div>
+                <img class="team-img-2 img-fluid" src="{% static 'img/yus2.png' %}" alt="team-img"
+                />
             </div>
 
+
+        </div> -->
+
+      <div class="col-lg-6 col-sm-6 team-img" data-aos="fade-right">
+        <div class="card position-relative mt-30 rounded-0 border-0">
+          <img
+            class="team-img1 img-fluid w-446 h-150"
+            src="{% static 'img/yus1.png' %}"
+            alt=""
+          />
+
+          <div
+            class="card position-absolute rounded-0 team-us-img-2"
+            style="width: 15rem"
+          >
+            <img
+              class="team-img2 img-fluid"
+              src="{% static 'img/yus2.png' %}"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="col chose-content" data-aos="fade-left">
-            <h5 id="team-1" >About</h5>
-            <h3>Why Chose Us</h3>
-            <p class="spons-content">Leverage agile frameworks to provide a robust synopsis for strategy foster
-            collaborative thinking to further the overall value proposition.</p>
+      <div class="col chose-content" data-aos="fade-left">
+        <h5 id="team-1" class="team-1-info p-1 px-2">About</h5>
+        <h3>Why Chose Us</h3>
+        <p class="spons-content">
+          Leverage agile frameworks to provide a robust synopsis for strategy
+          foster collaborative thinking to further the overall value
+          proposition.
+        </p>
 
-            <hr>
+        <hr />
 
-            <div class="row">
-                <div class="col">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="51" viewBox="0 0 50 51" fill="none">
-                        <path d="M39.1821 1.5H46.8185C47.3971 1.5 47.9521 1.72987 48.3613 2.13904C48.7704 2.54821 49.0003 3.10316 49.0003 3.68182V11.3182" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M39.1821 49.5001H46.8185C47.3971 49.5001 47.9521 49.2702 48.3613 48.861C48.7704 48.4519 49.0003 47.8969 49.0003 47.3182V39.6819" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.8182 49.5001H3.18182C2.60316 49.5001 2.04821 49.2702 1.63904 48.861C1.22987 48.4519 1 47.8969 1 47.3182V39.6819" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.8182 1.5H3.18182C2.60316 1.5 2.04821 1.72987 1.63904 2.13904C1.22987 2.54821 1 3.10316 1 3.68182V11.3182" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M25.0005 29.8637C29.8204 29.8637 33.7277 25.9564 33.7277 21.1365C33.7277 16.3165 29.8204 12.4092 25.0005 12.4092C20.1805 12.4092 16.2732 16.3165 16.2732 21.1365C16.2732 25.9564 20.1805 29.8637 25.0005 29.8637Z" fill="#FFD550" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.5188 38.5909C11.9135 35.96 13.9985 33.7588 16.55 32.2236C19.1014 30.6884 22.0229 29.8772 25.0006 29.8772C27.9783 29.8772 30.8998 30.6884 33.4512 32.2236C36.0027 33.7588 38.0877 35.96 39.4824 38.5909" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.95102 37.2514C9 35.5 10 33.5 12.7773 31.4407" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M31.9114 11.3678C33.5 12.5 35.5 14.5 36.4004 17.4429" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19.5699 22.0509C18.7107 20.2559 19.7109 16.2559 23.3923 15.5357" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    <h4>Our Vission</h4>
-                    <p>Leverage agile frameworks to <br>
-                    provide a robust synopsis for <br>
-                    strategy foster.
-                </p>
-                </div>
+        <div class="row">
+          <div class="col">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="51"
+              viewBox="0 0 50 51"
+              fill="none"
+            >
+              <path
+                d="M39.1821 1.5H46.8185C47.3971 1.5 47.9521 1.72987 48.3613 2.13904C48.7704 2.54821 49.0003 3.10316 49.0003 3.68182V11.3182"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M39.1821 49.5001H46.8185C47.3971 49.5001 47.9521 49.2702 48.3613 48.861C48.7704 48.4519 49.0003 47.8969 49.0003 47.3182V39.6819"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.8182 49.5001H3.18182C2.60316 49.5001 2.04821 49.2702 1.63904 48.861C1.22987 48.4519 1 47.8969 1 47.3182V39.6819"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.8182 1.5H3.18182C2.60316 1.5 2.04821 1.72987 1.63904 2.13904C1.22987 2.54821 1 3.10316 1 3.68182V11.3182"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M25.0005 29.8637C29.8204 29.8637 33.7277 25.9564 33.7277 21.1365C33.7277 16.3165 29.8204 12.4092 25.0005 12.4092C20.1805 12.4092 16.2732 16.3165 16.2732 21.1365C16.2732 25.9564 20.1805 29.8637 25.0005 29.8637Z"
+                fill="#FFD550"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.5188 38.5909C11.9135 35.96 13.9985 33.7588 16.55 32.2236C19.1014 30.6884 22.0229 29.8772 25.0006 29.8772C27.9783 29.8772 30.8998 30.6884 33.4512 32.2236C36.0027 33.7588 38.0877 35.96 39.4824 38.5909"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7.95102 37.2514C9 35.5 10 33.5 12.7773 31.4407"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M31.9114 11.3678C33.5 12.5 35.5 14.5 36.4004 17.4429"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.5699 22.0509C18.7107 20.2559 19.7109 16.2559 23.3923 15.5357"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4>Our Vission</h4>
+            <p>
+              Leverage agile frameworks to <br />
+              provide a robust synopsis for <br />
+              strategy foster.
+            </p>
+          </div>
 
-                <div class="col">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="51" viewBox="0 0 33 51" fill="none">
-                        <path d="M15 25.5L1.7 15.525C1.4839 15.3608 1.3084 15.1492 1.18703 14.9065C1.06566 14.6638 1.00167 14.3964 1 14.125V6.25C1 5.78587 1.18437 5.34075 1.51256 5.01256C1.84075 4.68437 2.28587 4.5 2.75 4.5H27.25C27.7141 4.5 28.1593 4.68437 28.4874 5.01256C28.8156 5.34075 29 5.78587 29 6.25V14.0375C28.9983 14.3089 28.9343 14.5763 28.813 14.819C28.6916 15.0617 28.5161 15.2733 28.3 15.4375L15 25.5Z" fill="#FFD550" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3 16.5H27" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15 25.5L1.7 35.475C1.4839 35.6392 1.3084 35.8508 1.18703 36.0935C1.06566 36.3362 1.00167 36.6036 1 36.875V44.75C1 45.2141 1.18437 45.6592 1.51256 45.9874C1.84075 46.3156 2.28587 46.5 2.75 46.5H27.25C27.7141 46.5 28.1592 46.3156 28.4874 45.9874C28.8156 45.6592 29 45.2141 29 44.75V36.9625C28.9983 36.6911 28.9343 36.4238 28.813 36.181C28.6916 35.9383 28.5161 35.7267 28.3 35.5625L15 25.5Z" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15 34.5V25.5" stroke="#1C1F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M32 4.5L32 9.5" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4 38.5L4 43.5" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 1.5L1 1.5" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M28 49.5H13" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M28.8524 31.6935L21 25.5" stroke="#1C1F35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19 13.5L4 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    <h4>Estimate Shipping</h4>
-                    <p>Leverage agile frameworks to <br>
-                    provide a robust synopsis for <br>
-                    strategy foster.
-                </p>
-                </div>
-
-            </div>
+          <div class="col">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="33"
+              height="51"
+              viewBox="0 0 33 51"
+              fill="none"
+            >
+              <path
+                d="M15 25.5L1.7 15.525C1.4839 15.3608 1.3084 15.1492 1.18703 14.9065C1.06566 14.6638 1.00167 14.3964 1 14.125V6.25C1 5.78587 1.18437 5.34075 1.51256 5.01256C1.84075 4.68437 2.28587 4.5 2.75 4.5H27.25C27.7141 4.5 28.1593 4.68437 28.4874 5.01256C28.8156 5.34075 29 5.78587 29 6.25V14.0375C28.9983 14.3089 28.9343 14.5763 28.813 14.819C28.6916 15.0617 28.5161 15.2733 28.3 15.4375L15 25.5Z"
+                fill="#FFD550"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3 16.5H27"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 25.5L1.7 35.475C1.4839 35.6392 1.3084 35.8508 1.18703 36.0935C1.06566 36.3362 1.00167 36.6036 1 36.875V44.75C1 45.2141 1.18437 45.6592 1.51256 45.9874C1.84075 46.3156 2.28587 46.5 2.75 46.5H27.25C27.7141 46.5 28.1592 46.3156 28.4874 45.9874C28.8156 45.6592 29 45.2141 29 44.75V36.9625C28.9983 36.6911 28.9343 36.4238 28.813 36.181C28.6916 35.9383 28.5161 35.7267 28.3 35.5625L15 25.5Z"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 34.5V25.5"
+                stroke="#1C1F35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M32 4.5L32 9.5"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M4 38.5L4 43.5"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 1.5L1 1.5"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M28 49.5H13"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M28.8524 31.6935L21 25.5"
+                stroke="#1C1F35"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19 13.5L4 13.5"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4>Estimate Shipping</h4>
+            <p>
+              Leverage agile frameworks to <br />
+              provide a robust synopsis for <br />
+              strategy foster.
+            </p>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
+  </div>
 </section>
-
 
 <section class="sponsores">
-    <div class="container">
-        <div class="row">
-           
-<div class="col spon-img" id="spons-col-1">
-     <!-----
-    <img class="team-img" src="{% static 'img/spons1.jpg' %}" alt="team-img"
-    />
-    ----->
-</div>
+  <div class="container">
+    <div class="row row-spon mt-5 px-5">
+      <div
+        class="card border-0 position-relative px-0 features-card"
+        style="width: 14rem"
+      >
+        <img src="{% static 'img/spons1.jpg' %}" alt="" />
 
-<div class="col spon-img">
-    <img class="spons-img" src="{% static 'img/spons2.png' %}" alt="spons-img" />
-</div>
+        <img
+          class="spons-img position-absolute my-4 py-4"
+          src="{% static 'img/studiog.png' %}"
+          alt="spons-img"
+        />
+      </div>
 
-<div class="col spon-img">
-    <img class="spons-img" src="{% static 'img/spons3.png' %}" alt="spons-img"/> 
-</div>
+      <div
+        class="card border-0 position-relative px-0 spons-card"
+        style="width: 14rem"
+      >
+        <img
+          class="spons-img position-absolute my-4 py-4"
+          src="{% static 'img/Norto.png' %}"
+          alt="spons-img"
+        />
+      </div>
 
-<div class="col spon-img">
-    <img class="spons-img" src="{% static 'img/spons4.png' %}" alt="spons-img"/>
-</div>
+      <div
+        class="card border-0 position-relative px-0 spons-card"
+        style="width: 14rem"
+      >
+        <img
+          class="spons-img position-absolute my-4 py-4"
+          src="{% static 'img/points one.png' %}"
+          alt="spons-img"
+        />
+      </div>
 
-        </div>
+      <div
+        class="card border-0 position-relative px-0 spons-card"
+        style="width: 14rem"
+      >
+        <img
+          class="spons-img position-absolute my-4 py-4"
+          src="{% static 'img/Out Of The Sand Box.png' %}"
+          alt="spons-img"
+        />
+      </div>
     </div>
+  </div>
 </section>
 
+<script>
+  window.onload = (event) => {
+    changeBackgroundImage("team");
+  };
 
-
-
-
-
-
-
-
-
- <script>
-    window.onload = (event) => {
-        changeBackgroundImage('team')
-    };
-
-    window.addEventListener('unload', () => {
-        changeBackgroundImage();
-    })
- </script>
+  window.addEventListener("unload", () => {
+    changeBackgroundImage();
+  });
+</script>
 
 {% endblock %}

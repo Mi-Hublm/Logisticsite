@@ -1,3 +1,7 @@
+/* import */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,400&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
@@ -44,27 +48,7 @@ html{
     to { transform: rotate(1turn) }
 }
 
-
-.top-nav{
-    display: flex;
-    color: #f4f4f4;
-    background-color: #091247;
-    justify-content: space-around;
-    padding: 30px 10%;
-}
-
-.top-nav-content ul{
-    display: flex;
-}
-
-.top-nav-content li{
-    display: flex;
-    align-items: center;
-}
-
-.top-nav-content li i{
-    margin: 15px 0px 15px 0px;
-}
+/* navbar start */
 
 .ph-clock, .ph-envelope-simple, .ph-phone{
     font-size: 24px;
@@ -82,45 +66,9 @@ html{
     margin: 10px;
 }
 
-.logo{
-    margin-top: 10px;
-}
 
 
-.main-nav{
-    display: flex;
-    justify-content: space-around;
-    background-color: #09124265;
-}
-
-.main-nav-links{
-    display: flex;
-    margin: 0px;
-}
-
-.main-nav-links li{
-    list-style: none;
-    padding: 10px;
-}
-
-.main-nav-links li a{
-    text-decoration: none;
-    color: #f4f4f4;
-    font-family: monospace;
-}
-
-.social{
-    color: #f4f4f4;
-}
-
-#btn-quote{
-background-color: #f4f4f4;
-padding: 20px;
-text-align: center;
-border: none;
-
-}
-
+/* navbar end */
 
 #banner{
     height: 55vh;
@@ -131,19 +79,7 @@ border: none;
     color: #f4f4f4;
 }
 
-/* footer section by @deboundle1 */
 
-.footer {
-    background-color: #091247;
-    color: #f4f4f4;
-}
-.footer-image {
-    width: 100%;
-    height: 412px;
-}
-.footer h2 {
-    background-color: rgba(255, 255, 255, 0.233) 8%;
-}
 /*
 Team page
 */
@@ -241,34 +177,27 @@ padding: 20px;
     padding-top: 10px;
 }
 
-/* .why-chose-us{
-    margin-bottom: 30px;
+/* .team-img{
+    margin-top: 80px;
+    max-width: 100%;
+    height: auto;
 } */
 
-.chose-img-1{
-    width: 751px;
-    height: 511px;
+
+.team-us-img-2 {
+    width: -400px;
+    height: -300px;
+    left: 345px;
+    top: 200px;
+    border: 10px solid #ffffff;
 }
 
-.chose-img-2{
-    width: 264px;
-    height: 251px;
-}
 
-.chose-img{
-    margin-right: 20px;
-    position: relative;
-}
 
-.chose-img-2{
-    position: absolute;
-    left: 476px;
-    bottom: 25px;
-    border: 20px solid #f4f4f4;
-}
-
+/* why-us style  */
 
 .chose-content{
+    margin-left: 50px;
     margin-top: 30px;
     padding: 10px;
 }
@@ -285,40 +214,12 @@ padding: 20px;
     font-weight: bolder;
 }
 
-.sponsores{
-    margin-top: 25px;
-    padding: 15px;
-    margin-bottom: 30px;
-    margin-left: 75px;
-}
-
-
-.spon-img{
-    padding: 25px;
-    width: 20px;
-    height: 170px;
-    border: none;
-}
-
-.spons-content{
-    font-size: 16px;
-    padding: 4px;
-}
-
-#spons-col-1{
-    background: url('/static/Img/spons1.jpg');
-}
-.spons-img{
-    justify-content: center;
-    padding: 15px;
-}
-
 /* Blog page css */
 
 .blog-iteams{
     position: relative;
     margin-bottom: 25px;
-    display: flex;
+    /* display: flex; */
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -410,3 +311,88 @@ padding: 20px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
+
+
+.spons-card{
+    background-color: #091247;
+    margin: 5px;
+    padding: 15px;
+    /* width: 224px;
+    height: 174px; */
+}
+
+.row-spon{
+    border: 2px solid #091247;
+    padding: 0;
+}
+
+
+/* .sponsores{
+    margin-top: 25px;
+    padding: 15px;
+    margin-bottom: 30px;
+    margin-left: 75px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer section by @deboundle1 */
+
+.footer {
+    background-color: #091247;
+    color: #f4f4f4;
+}
+.footer-image {
+    width: 100%;
+    height: 412px;
+}
+.footer h2 {
+    background-color: rgba(255, 255, 255, 0.233) 8%;
+}
+/* Media screens */
+
+
+  @media (max-width: 996px) {
+    .blog-iteams {
+      flex-wrap: wrap;
+    }
+
+    /* .hover-div {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+        width: 300px;
+        height: 200px;
+        background-color: #091247;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      } */
+
+  }
+  
+  @media (max-width: 1200px) {
+
+
+     /*
+    .team-img {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    */
+
+    .team-us-img-2{
+        display: none;
+    }
+  } 
+  

@@ -1,9 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from api.shipments import Shipment
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/database_name'  # Use a proper database in production
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
 
 # Define a Shipment model for the database (representing tracking data)
@@ -14,7 +19,8 @@ class Shipment(db.Model):
     location = db.Column(db.String(100))
 
 # Create the database tables (you would run this once to initialize your database)
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 @app.route("/api/tracking/<string:tracking_number>", methods=["GET"])
 def track_shipment(tracking_number):
