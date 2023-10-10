@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "cloudinary",
     "cloudinary_storage",
     "rest_framework",
+    'rest_framework.authtoken',
     # 'social_django',
     'shipment',
     'User',
@@ -54,6 +55,22 @@ SESSION_COOKIE_NAME = 'session_cookie'
 
 
 ROOT_URLCONF = 'logistics.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
+    'User.custom_auth_backend.FlaskAPITokenBackend',  # Custom backend
+]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+
+LOGIN_URL = 'login'
+
 
 TEMPLATES = [
     {

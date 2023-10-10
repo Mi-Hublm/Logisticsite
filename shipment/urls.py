@@ -1,6 +1,8 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from shipment import views
 
 urlpatterns = [
-    path("new_order", views.new_order, name="order"),
+    path("order", login_required(views.order), name="order"),
+    path("package", login_required(views.package_info), name="package"),
 ]

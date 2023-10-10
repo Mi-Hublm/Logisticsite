@@ -1,39 +1,36 @@
-@app.route("/api/authenticate", methods=["POST"])
-@limiter.limit("5 per minute")
+@app.route("/api/register", methods=["POST"])
 @csrf.exempt
-def authenticate():
+def register():
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
+    email = data.get("email")
 
-    user = User.query.filter_by(username=username).first()
+    # Check if the username or email already exists
+    existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+    if existing_user:
+        logger.warning(f"Registration failed: Username or email already in use for user {username}")
+        return abort(400, "Username or email already in use")
 
-    if user and user.check_password(password):
-        # if not user.email_verified:
-        #     logger.warning(f"Authentication failed: Email address not verified for user {username}")
-        #     return abort(403, "Email address not verified")
+    # Create a new user
+    new_user = User(username=username, email=email)
+    new_user.set_password(password)
 
-        if user.two_factor_enabled:
-            # Get the user's 2FA secret
-            two_factor_secret = TwoFactorSecret.query.filter_by(user_id=user.id).first()
+    # Add the user to the database
+    db.session.add(new_user)
+    db.session.commit()
 
-            # Verify the user's 2FA code with a longer time step (e.g., 60 seconds)
-            totp = pyotp.TOTP(two_factor_secret.secret, interval=60)
-            try:
-                if not totp.verify(data.get("2fa_code")):
-                    logger.warning(f"Authentication failed: Invalid 2FA code for user {username}")
-                    return abort(401, "Invalid 2FA code")
-            except Exception as e:
-                logger.error(f"Authentication failed: {e}")
-                return abort(500, "Internal server error")
+    # Generate an access token for the new user
+    access_token = create_access_token(identity=new_user.id)
 
-        access_token = create_access_token(identity=username)
-        logger.info(f"Authentication successful for user {username}")
-        return jsonify({"message": "Authentication successful", "access_token": access_token}), 200
-    logger.warning(f"Authentication failed: Invalid credentials for user {username}")
-    return abort(401, "Invalid credentials")
+    # Print the access token to the terminal
+    print(f'Access Token: {access_token}')
 
+    # Include the access token in the response
+    response_data = {
+        "message": "Registration successful. Check your email for verification instructions.",
+        "access_token": access_token
+    }
 
-        if not token:
-            # Handle the case where the token is not available
-            return render(request, 'order.html', {'error_message': 'Token not found'})
+    logger.info(f"Registration successful for user {username}")
+    return jsonify(response_data), 201
