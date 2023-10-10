@@ -7,7 +7,7 @@ import json
 import os
 from django.http import JsonResponse
 from requests import Session
-import jwt
+# import jwt
 import datetime
 # from django.utils.logging import getLogger
 from django.http import HttpResponse
