@@ -22,7 +22,8 @@ def create_new_shipment(request):
         if request.user.is_authenticated:
             user = request.user
             orders = Shipment.objects.filter(customer_id=user.id, is_active = True)
-            return render(request, 'test.html', {'orders': orders})
+            form = ShipmentForm()
+            return render(request, 'test.html', {'orders': orders, 'form': form})
         else:
             data = {
                 'response': 'Please Login to access this'
