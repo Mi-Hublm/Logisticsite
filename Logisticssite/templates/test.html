@@ -1,0 +1,13 @@
+{% for order in orders %}
+
+{{ order.order_id }}
+<a href='/shipment/cancel/orders/{{order.order_id}}/'>cancel</a>
+<br>
+{% endfor%}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
