@@ -8,3 +8,7 @@ urlpatterns = [
     path("login", views.user_login, name="login"),
     path("profile", login_required(views.profile), name="profile"),
 ]
+# urlpatterns = [
+#     # path("new_order", views.new_order, name="order"),
+# >>>>>>> main
+# ]
