@@ -1,0 +1,72 @@
+{% extends "dashbase.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% load static %}
+
+
+{% block dashbase %}
+
+<div class="container mt-4  pt-3 pb-3">
+    <div class="row">
+        <div class="col-lg-4 justify-content-start">
+            <div class="text-center">
+                <img src="{% static 'img/pro1.jpg' %}" class="rounded-circle mb-2" width="100" height="100" alt="img">
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-8">
+        <b class="text-secondary">Profile Information</b><br>
+            <div class="card bg-white mt-2 mb-5">
+        <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">First name</label>
+              <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="first_name">
+            </div>
+
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="last_name">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="username">
+              </div>
+        
+        
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+            </div>
+        
+        
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Phone number</label>
+                <input type="tel" class="form-control" id="exampleInputPassword1" name="password">
+              </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

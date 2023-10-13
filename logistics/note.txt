@@ -1,26 +1,94 @@
+@app.route("/api/register", methods=["POST"])
+@csrf.exempt
+def register():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+    email = data.get("email")
 
-.banner{
-    background: url("/static/Img/Photo1111.png");
-    width: 100%;
-    height: 100%;
-}
+    # Check if the username or email already exists
+    existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+    if existing_user:
+        logger.warning(f"Registration failed: Username or email already in use for user {username}")
+        return abort(400, "Username or email already in use")
+
+    # Create a new user
+    new_user = User(username=username, email=email)
+    new_user.set_password(password)
+
+    # Add the user to the database
+    db.session.add(new_user)
+    db.session.commit()
+
+    # Generate an access token for the new user
+    access_token = create_access_token(identity=new_user.id)
+
+    # Print the access token to the terminal
+    print(f'Access Token: {access_token}')
+
+    # Include the access token in the response
+    response_data = {
+        "message": "Registration successful. Check your email for verification instructions.",
+        "access_token": access_token
+    }
+
+    logger.info(f"Registration successful for user {username}")
+    return jsonify(response_data), 201
 
 
-    .chose-img-1{
-    width: 200px;
-    height: 200px;
-    z-index: 2;
-    position: absolute;
-    margin-right: 100px;
-    margin-top: 100px;
-}
 
-.chose-img-2{
-    width: 200px;
-    height: 200px;
-    z-index: 1;
-    position: absolute;
-}
-       
+def register(request):
+    if request.method == 'POST':
+        # Get user registration data from the form
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        email = request.POST.get('email')
+
+        # Construct the data to send to the Flask API
+        data = {
+            'username': username,
+            'email': email,
+            'password': password
+        }
+
+        # Make a POST request to the Flask API's registration endpoint
+        response = requests.post('http://127.0.0.1:5000/api/register', json=data)
+
+        # Check the response from the Flask API
+        if response.status_code == 201:
+            # Registration was successful in the Flask API
+
+            try:
+                # Attempt to parse the JSON response for the token
+                token_data = response.json()
+                access_token = token_data.get('access_token')
+
+                # Print the token to the terminal
+                print(f'Access Token: {access_token}')
+            except json.JSONDecodeError as e:
+                # Handle JSON decoding error (e.g., empty response)
+                access_token = None
+
+            # If a token was obtained, store it in the session for future API requests
+            if access_token:
+                request.session['access_token'] = access_token
+
+                # Redirect to the login page with a success message (optional)
+                return redirect('login')
+
+        else:
+            try:
+                # Attempt to parse the JSON response
+                error_message = response.json().get('message', 'Registration failed')
+            except json.JSONDecodeError as e:
+                # Handle JSON decoding error (e.g., empty response)
+                error_message = 'Error: Invalid response from the API'
+
+            return render(request, 'register.html', {'error_message': error_message})
+
+    return render(request, "register.html")
+
+
+
 
 

@@ -10,13 +10,11 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,400;1,200;1,300&family=Poppins:ital,wght@0,200;0,400;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital@0;1&family=Rubik:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
     <link href="{% static 'Css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'Css/protection.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
       rel="stylesheet"
@@ -27,93 +25,239 @@
   </head>
   <body>
     <div class="loader"></div>
-    <header>
-      <nav>
-        <div class="top-nav">
-          <div class="logo">
-            <a href="{% url 'index' %}">
-              <img class="logo" src="{% static 'img/Logo.png' %}" alt="logo"
-            /></a>
+<nav>
+  <div class="navbar navbar-expand-lg p-0 d-flex text-white justify-content-around container-fluid" style="background-color: #091247;">
+
+    <div class="logo mt-10">
+      <!-- Logo -->
+<a class="navbar-brand" href="{% url 'index' %}">
+  <img class="logo" src="{% static 'img/Logo.png' %}" alt="logo" />
+</a>
+</div>
+                <!-- Top navigation content -->
+
+                <ul class="top-nav-content list-unstyled m-0 d-flex g-4">
+                  <li class="d-flex align-items-center">
+                    <div id="clock">
+                      <i class="ph ph-clock ext-warning fs-3"></i>
+                    </div>
+                    <p class="pt-2">
+                      Monday - Sat 9.00 - 18.00 <br />
+                      Sunday closed
+                    </p>
+                  </li>
+
+                  <li class="d-flex align-items-center">
+                    <div id="clock">
+                      <i class="ph ph-envelope text-warning fs-3 "></i>
+                    </div>
+                    <p class="pt-2">Email: <br />
+                      contact@Logistics.com
+                    </p>
+                  </li>
+
+                  <li class="d-flex align-items-center">
+                    <div id="clock">
+                      <i class="ph ph-phone-call text-warning fs-3"></i>
+                      </div>
+                    <p class="pt-2"> Call Us: <br />
+                      (+1) 112 365 480
+                    </p>
+                  </li>
+                </ul>
+</div>
+
+
+  <!-- toggler maenu -->
+
+
+  <!-- end -->
+
+
+  <div id="banner" class="img-fluid">
+    <div class="d-flex" style="background-color: #09124769;">
+              <!-- Main navigation -->
+  <ul class=" m-3 nav-links d-flex flex-row flex-grow-1 list-unstyled " style="font-family:'Rubik', sans-serif;">
+  
+  <li class="nav-item mx-3 fs-4 text text-white">
+    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+  </li>
+  <li class="nav-item mx-3 fs-4 text text-white">
+    <a class="nav-link" href="{% url 'about' %}">About</a>
+  </li>
+  <li class="nav-item mx-3 fs-4 text text-white">
+    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+  </li>
+  <li class="nav-item mx-3 fs-4 text text-white">
+    <a class="nav-link" href="{% url 'team' %}">Team</a>
+  </li>
+  <li class="nav-item mx-3 fs-4 text text-white">
+    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+  </li>
+  </ul>
+  
+    <!-- Social media buttons -->
+  <ul class="navbar-nav m-3 d-flex flex-row justify-content-end list-unstyled ">
+  <li class="nav-item mx-2 fs-3 text ">
+  <a class="nav-link" href="#">
+    <i class="ph ph-instagram-logo text-white"></i>
+  </a>
+  </li>
+  <li class="nav-item mx-2 fs-3 text ">
+  <a class="nav-link" href="#">
+    <i class="ph ph-facebook-logo text-white"></i>
+  </a>
+  </li>
+  <li class="nav-item mx-2 fs-3 text ">
+  <a class="nav-link" href="#">
+    <i class="ph ph-twitter-logo text-white"></i>
+  </a>
+  </li>
+  <li class="nav-item mx-2 fs-3 text ">
+  <a class="nav-link" href="#">
+    <i class="ph ph-linkedin-logo text-white"></i>
+  </a>
+  </li>
+    <!-- Request quote button -->
+  <button class="btn btn-outline-light mx-3" type="button">Request Quote</button>
+  </ul>
+  <!-- End social media buttons-->
+    </div>
+  
+    <div class="container">
+      {% block bannertitle %}
+  
+  
+      {% endblock %}
+      </div>
+  
+  </div>
+</nav>
+
+
+    
+
+  {% block content %}
+   {% endblock %}
+
+    <footer class ="footer" style="background: #091247; color: #fff;">
+      
+      <div class="container ">
+        <div class="row g-0 ">
+        
+          <div class="col-lg-3 col-sm-6 ">
+            <div class="single-box">
+              <div class="footer-title py-3">
+
+                <a href="{% url 'index' %}">
+                <img class=" justify-content-center align-items-center" src="{% static 'img/Logo.png' %}" alt="logo">
+                </a>
+              </div>
+
+              <div class=" footer-contact-info py-4 mt-3">
+                <p class="lh-base" >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Qui laboriosam libero
+                </p>
+
+                <ul class="top-nav-content list-unstyled m-0">
+                  <li class="align-items-center">
+                    <div id="clock">
+                      <i class="ph ph-envelope text-warning fs-3 "></i>
+                    </div>
+                    <p class="pt-2">Email: <br />
+                      contact@Logistics.com
+                    </p>
+                  </li>
+
+                  <li>
+                    <div id="clock">
+                      <i class="ph ph-phone-call text-warning fs-3"></i>
+                      </div>
+                    <p class="pt-2"> Call Us: <br />
+                      (+1) 112 365 480
+                    </p>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
           </div>
 
-          <div class="top-nav-content">
-            <ul>
-              <li>
-                <div id="clock">
-                  <i class="ph ph-clock"></i>
-                  </div>
-                <p>
-                  Monday - Sat 9.00 - 18.00 <br />
-                  Sunday closed
-                </p>
-              </li>
+          <div class="col-lg-3 col-sm-6 ">
+            <div class="single-box ">
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="fs-3 px-5">Pages</h2>
+              </div>
 
-              <li>
-                <div id="clock">
-                  <i class="ph ph-envelope-simple"></i>
-                </div>
-                <p>
-                  Email <br />
-                  Support@transitflow.com
-                </p>
-              </li>
+              <ul class="py-3 px-5 mt-3 list-unstyled lh-lg">
+                <li><a href="#" class="text-decoration-none link-light ">About us</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Our Team</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Our Project</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Pricing</a></li>
+                <li><a href="#" class="text-decoration-none link-light ">Contact</a></li>
+              </ul>
 
-              <li>
-                <div id="clock">
-                  <i class="ph ph-phone"></i>
-                </div>
-                <p>
-                  Call us <br />
-                  (00) 112 365 489
-                </p>
-              </li>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 ">
+            <div class="single-box">
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="px-5 fs-3" >Utility</h2>
+              </div>
+              
+              <ul class="py-3 mt-3 list-unstyled lh-lg px-5">
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Change Log</a></li>
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">License</a></li>
+                <li ><a href="{% url 'protection' %}" class="text-decoration-none link-light ">Protected</a></li>
+                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Not Found</a></li>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 text-start">
+            <div class="single-box">
+              <div class="footer-title bg-secondary py-3">
+                <h2 class="fs-3 px-5">Subscribe</h2>
+              </div>
+              
+              <div class="py-3 mt-3 ">
+                <input type="text" class="form-control" placeholder="Email Here" aria-label="Recipient's username">
+                <br>
+                <button class="btn btn-warning fw-bold " type="button" id="button-addon2">Send Now</button>
+
+                <i class="ph ph-linkedin-logo text-warning fs-3 p-2"></i>
+                <i class="ph ph-twitter-logo text-warning fs-3 p-2"></i>
+                <i class="ph ph-facebook-logo text-warning fs-3 p-2"></i>
+              </div>
+
+            </div>
+          </div>
+
+
+        <hr>
+        <div class="row place-item-center small">
+          <div class="col-lg-6 col-sm-6 text-center">
+            <p>Copyright TransitFlow | Designed By MIHUB Tech - Powered By WebFlow</p>
+          </div>
+          <div class="col-lg-6 col-sm-6 text-secondary text-end">
+            <ul class="list-inline ">
+              <li class="list-inline-item">Style Guild &nbsp;&nbsp;</li>
+              <li class="list-inline-item">License  &nbsp;&nbsp;</li>
+              <li class="list-inline-item">Change Log  &nbsp;&nbsp;</li>
+              <li class="list-inline-item">Password  &nbsp;&nbsp;</li>
             </ul>
           </div>
+
         </div>
-
-        <div id="banner" class="layer">
-          <div class="main-nav">
-              <ul class="main-nav-links">
-                <li>
-                  <a href="{% url 'index' %}">Home |</a>
-                </li>
-                <li>
-                  <a href="{% url 'about' %}">About |</a>
-                </li>
-                <li>
-                  <a href="{% url 'blog' %}">Blog |</a>
-                </li>
-                <li>
-                  <a href="{% url 'team' %}">Project |</a>
-                </li>
-                <li>
-                  <a href="{% url 'contact' %}">Contact</a>
-                </li>
-              </ul>
-      
-              <div class="social">
-                <ul class="main-nav-links ">
-                  <li><i class="ph ph-instagram-logo"></i></li>
-                  <li><i class="ph ph-facebook-logo"></i></li>
-                  <li><i class="ph ph-twitter-logo"></i></li>
-                  <li><i class="ph ph-linkedin-logo"></i></li>
-                  <button id="btn-quote">Request Quote</button>
-                </ul>
-                </div>
-            </div>
-
-        <div class="container">
-          {% block bannertitle %}
-
-
-          {% endblock %}
-          </div>
-
       </div>
-      </nav>
-    </header>
 
-  {% block content %} {% endblock %}
+
+    </footer>
+
+
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

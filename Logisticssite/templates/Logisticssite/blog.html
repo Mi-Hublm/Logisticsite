@@ -1,16 +1,95 @@
 {% extends "base.html" %}
 
+{% load static%}
+
 {% block title %} Blog {% endblock %}
 
 {% block bannertitle %}
-<h3> Our Contact</h3>
-<h1> Contact</h1>
+<div class="container" id="team">
+    <h5 id="team-1" class="team-1-info p-1 px-2" >Blog</h5>
+    <h2 id="team-2">Our Latest News</h2>
+</div>
 {% endblock %}
-
 
 {% block content %}
 
-<p> The blog page</p>
+<section class="blog-section">
+  <div class="team-section-head">
+    <h4 id="team-1" class="team-1-info p-1 px-2">Our Blog</h4>
+    <h2>Our Latest News</h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <!----Start of first content-->
+      {% for i in posts %}
+      <div class="col blog-iteams d-flex container">
+
+        <div class="col-lg-6 col-6 p-3 ">
+          <div class="blog-section-img">
+              <a href="{% url 'single' i.pk %}" >
+                <img class="blog-img" src="{{i.image.url}}" alt="blog-img"/>
+                </a>
+            <div class="hover-div">
+              <p>Read more</p>
+            </div>
+          </div>
+          <div class="blog-icon">
+            <i class="ph ph-calendar-blank"></i>
+            <h4>{{i.date.day}}</h4>
+            <p id="month">{{ i.date|date:'F' }}</p>
+          </div>
+        </div>
+
+
+        <div class="col-lg-5 ">
+          <div class=" blog-content p-3 m-3">
+            <a href="{% url 'single' i.pk %}"><h3 id="content-1"> {{i.title}} </h3></a>
+            <p id="content-2">{{i.decs}}</p>
+
+            <!-- <ul>
+              <li>Urgent transport</li>
+              <li>Reliable & experinced staffs</li>
+              <li>Urgent transport soluction</li>
+              <li>Reliable & experinced staffs</li>
+            </ul> -->
+          </div>
+        </div>
+
+      </div>
+
+      {% endfor %}
+    </div>
+          <!-- pagenation -->
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disable">
+                {% if posts.has_previous %}
+                <a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a>
+              </li>
+              {% endif %}
+
+              {% for page_number in posts.paginator.page_range %}
+              <li class="page-item active" aria-current="page">
+              <a class="page-link " href="?page={{ page_number }}" >{{ page_number }}</a>
+              </li>
+              {% endfor %}
+
+
+              {% if posts.has_next %}
+              <li class="page-item ">
+                <a class="page-link" href="?page={{ posts.next_page_number }}">Next</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+  </div>
+
+
+</section>
+
+  
 
 <script>
     window.onload = (event) => {
