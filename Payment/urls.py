@@ -1,5 +1,6 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    # path("new_order", views.new_order, name="order"),
+    path('admin/', admin.site.urls), #change these when working here
 ]

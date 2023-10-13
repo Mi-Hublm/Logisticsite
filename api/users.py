@@ -9,8 +9,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")  # Change this to a strong, random value in production
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+#use for production
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY") 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
