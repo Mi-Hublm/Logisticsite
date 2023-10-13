@@ -38,7 +38,12 @@
     <p>Please log in to access this content.</p>
 {% endif %}
 
-        <p class="text-center text-danger ms-3">Sign out</p>
+
+        {% if user.is_authenticated %}
+        <a href="/logout"><p class="text-center text-danger ms-3">Sign out</p></a>
+        {% else %}
+        <a href="login"><p class="text-center text-danger ms-3">Sign in</p></a>
+        {% endif %}
       </div>
     </div>
   </nav>

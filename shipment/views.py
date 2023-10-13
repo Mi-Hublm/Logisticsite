@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 import json
 import requests
 
-
+@login_required
 def order(request):
     if request.method == 'POST':
         name = request.POST.get('name')

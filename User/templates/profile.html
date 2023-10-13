@@ -12,8 +12,8 @@
         <div class="col-lg-4 justify-content-start">
             <div class="text-center">
                 <img src="{% static 'img/pro1.jpg' %}" class="rounded-circle mb-2" width="100" height="100" alt="img">
-                <h4>Mike Smith</h4>
-                <p class="text-secondary">mikeedaboss1@gmail.com</p>
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                <p class="text-secondary">{{ user.email }}</p>
             </div>
 
         </div>
@@ -25,6 +25,18 @@
         <div class="card-body">
         <form method="POST">
             {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">First name</label>
+              <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="first_name">
+            </div>
+
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="last_name">
+            </div>
+
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
                 <input type="text" class="form-control" id="usernane" aria-describedby="emailHelp" name="username">

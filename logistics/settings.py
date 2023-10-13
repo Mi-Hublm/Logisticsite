@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'shipment',
     'User',
     'Payment',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,7 +65,6 @@ ROOT_URLCONF = 'logistics.urls'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default Django backend
-    'User.custom_auth_backend.FlaskAPITokenBackend',  # Custom backend
 ]
 
 
@@ -188,3 +194,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 #     "fields": "id,name,email"
 # }
+
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = '/login'
