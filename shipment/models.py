@@ -34,3 +34,21 @@ class Shipment(models.Model):
         verbose_name = 'Shipment'
         verbose_name_plural = 'Shipments'
 
+
+class Order(models.Model):
+    # Recipient Information
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=None)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+    address = models.TextField()
+
+    # Package Information
+    package_name = models.CharField(max_length=100)
+    package_weight = models.DecimalField(max_digits=5, decimal_places=2)
+    package_description = models.TextField()
+    tracking_number = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+
+    def __str__(self):
+        return f"{self.package_name} - {self.tracking_number}"

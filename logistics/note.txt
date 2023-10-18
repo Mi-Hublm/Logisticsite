@@ -1,94 +1,32 @@
-@app.route("/api/register", methods=["POST"])
-@csrf.exempt
-def register():
-    data = request.get_json()
-    username = data.get("username")
-    password = data.get("password")
-    email = data.get("email")
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
-    # Check if the username or email already exists
-    existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
-    if existing_user:
-        logger.warning(f"Registration failed: Username or email already in use for user {username}")
-        return abort(400, "Username or email already in use")
-
-    # Create a new user
-    new_user = User(username=username, email=email)
-    new_user.set_password(password)
-
-    # Add the user to the database
-    db.session.add(new_user)
-    db.session.commit()
-
-    # Generate an access token for the new user
-    access_token = create_access_token(identity=new_user.id)
-
-    # Print the access token to the terminal
-    print(f'Access Token: {access_token}')
-
-    # Include the access token in the response
-    response_data = {
-        "message": "Registration successful. Check your email for verification instructions.",
-        "access_token": access_token
-    }
-
-    logger.info(f"Registration successful for user {username}")
-    return jsonify(response_data), 201
-
-
-
-def register(request):
+@csrf_exempt
+def create_order(request):
     if request.method == 'POST':
-        # Get user registration data from the form
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
+        if 'recipient_first_name' in request.POST:
+            # Handle the recipient form submission
+            recipient_first_name = request.POST['recipient_first_name']
+            recipient_last_name = request.POST['recipient_last_name']
+            recipient_email = request.POST['recipient_email']
+            recipient_phone_number = request.POST['recipient_phone_number']
+            recipient_address = request.POST['recipient_address']
+            recipient_full_name = f"{recipient_first_name} {recipient_last_name}"
+            recipient_contact_info = f"{recipient_email}, {recipient_phone_number}"
 
-        # Construct the data to send to the Flask API
-        data = {
-            'username': username,
-            'email': email,
-            'password': password
-        }
+            return render(request, 'package_details.html', {'recipient_full_name': recipient_full_name, 'recipient_contact_info': recipient_contact_info})
+        elif 'package_name' in request.POST:
+            # Handle the package details form submission
+            package_name = request.POST['package_name']
+            package_weight = request.POST['package_weight']
+            package_description = request.POST['package_description']
+            package_extra_info = request.POST['package_extra_info']
 
-        # Make a POST request to the Flask API's registration endpoint
-        response = requests.post('http://127.0.0.1:5000/api/register', json=data)
+            return render(request, 'order_summary.html', {'package_name': package_name, 'package_weight': package_weight, 'package_description': package_description, 'package_extra_info': package_extra_info})
+        elif 'order_date' in request.POST:
+            # Handle the order summary form submission
+            order_date = request.POST['order_date']
 
-        # Check the response from the Flask API
-        if response.status_code == 201:
-            # Registration was successful in the Flask API
+            # Create the order here
 
-            try:
-                # Attempt to parse the JSON response for the token
-                token_data = response.json()
-                access_token = token_data.get('access_token')
-
-                # Print the token to the terminal
-                print(f'Access Token: {access_token}')
-            except json.JSONDecodeError as e:
-                # Handle JSON decoding error (e.g., empty response)
-                access_token = None
-
-            # If a token was obtained, store it in the session for future API requests
-            if access_token:
-                request.session['access_token'] = access_token
-
-                # Redirect to the login page with a success message (optional)
-                return redirect('login')
-
-        else:
-            try:
-                # Attempt to parse the JSON response
-                error_message = response.json().get('message', 'Registration failed')
-            except json.JSONDecodeError as e:
-                # Handle JSON decoding error (e.g., empty response)
-                error_message = 'Error: Invalid response from the API'
-
-            return render(request, 'register.html', {'error_message': error_message})
-
-    return render(request, "register.html")
-
-
-
-
-
+            return render(request, 'order_created.html')

@@ -30,7 +30,7 @@
 
     <div class="logo mt-10">
       <!-- Logo -->
-<a class="navbar-brand" href="{% url 'index' %}">
+<a class="navbar-brand" href="{% url 'home' %}">
   <img class="logo" src="{% static 'img/Logo.png' %}" alt="logo" />
 </a>
 </div>
@@ -80,7 +80,7 @@
   <ul class=" m-3 nav-links d-flex flex-row flex-grow-1 list-unstyled " style="font-family:'Rubik', sans-serif;">
   
   <li class="nav-item mx-3 fs-4 text text-white">
-    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
   </li>
   <li class="nav-item mx-3 fs-4 text text-white">
     <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -149,7 +149,7 @@
             <div class="single-box">
               <div class="footer-title py-3">
 
-                <a href="{% url 'index' %}">
+                <a href="{% url 'home' %}">
                 <img class=" justify-content-center align-items-center" src="{% static 'img/Logo.png' %}" alt="logo">
                 </a>
               </div>
@@ -207,10 +207,10 @@
               </div>
               
               <ul class="py-3 mt-3 list-unstyled lh-lg px-5">
-                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Change Log</a></li>
-                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">License</a></li>
+                <li ><a href="{% url 'home' %}" class="text-decoration-none link-light ">Change Log</a></li>
+                <li ><a href="{% url 'home' %}" class="text-decoration-none link-light ">License</a></li>
                 <li ><a href="{% url 'protection' %}" class="text-decoration-none link-light ">Protected</a></li>
-                <li ><a href="{% url 'index' %}" class="text-decoration-none link-light ">Not Found</a></li>
+                <li ><a href="{% url 'home' %}" class="text-decoration-none link-light ">Not Found</a></li>
               </ul>
 
             </div>

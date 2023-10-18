@@ -1,0 +1,69 @@
+{% extends "dashbase.html" %}
+
+{% block title %} Order {% endblock %}
+
+{% block dashbase %}
+<form method="POST">
+    {% csrf_token %}
+    <h2>Order Details</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Sender Information</h3>
+            <table class="table">
+                <tr>
+                    <th>Full Name</th>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{ user.phone_number }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <!-- <tr>
+                    <th>Delivery Address</th>
+                    <td>{{ user.delivery_address }}</td>
+                </tr> -->
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Recipient and Package Information</h3>
+            <table class="table">
+                <tr>
+                    <th>Full Name</th>
+                    <td>{{ recipient_info.first_name }} {{ recipient_info.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{ recipient_info.phone_number }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ recipient_info.email }}</td>
+                </tr>
+                <tr>
+                    <th>Delivery Address</th>
+                    <td>{{ recipient_info.address }}</td>
+                </tr>
+                <tr>
+                    <th>Package Name</th>
+                    <td>{{ package_info.package_name }}</td>
+                </tr>
+                <tr>
+                    <th>Package Weight</th>
+                    <td>{{ package_info.package_weight }} kg</td>
+                </tr>
+                <tr>
+                    <th>Package Description</th>
+                    <td>{{ package_info.package_description }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm</button>
+</form>
+{% endblock %}
