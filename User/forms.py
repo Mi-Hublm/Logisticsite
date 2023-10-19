@@ -13,14 +13,14 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ["first_name", "last_name", "username", "email", "phone_number", "password1", "password2"]
+        fields = ["first_name", "last_name", "user_name", "email", "phone_number", "password1", "password2"]
 
 
 
 class UserUpdateForm(forms.Form):
     first_name = forms.CharField(max_length=100, required=False)
     last_name = forms.CharField(max_length=100, required=False)
-    username = forms.CharField(max_length=100, required=False)
+    user_name = forms.CharField(max_length=100, required=False)
     email = forms.EmailField(required=False)
     phone_number = forms.CharField(max_length=15, required=False)
     password = forms.CharField(widget=forms.PasswordInput, required=False)

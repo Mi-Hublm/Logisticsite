@@ -45,7 +45,7 @@ def confirm_order(request):
         package_data = request.session.get('package_data', {})
 
         # Create an instance of the combined model using the session data
-        Order.objects.create(
+        order = Order.objects.create(
             user=request.user,
             first_name=recipient_data.get('first_name', ''),
             last_name=recipient_data.get('last_name', ''),
@@ -55,9 +55,10 @@ def confirm_order(request):
             package_name=package_data.get('package_name', ''),
             package_weight=package_data.get('package_weight', ''),
             package_description=package_data.get('package_description', ''),
-            tracking_number=str(uuid.uuid4())[:8]
+            # tracking_number=str(uuid.uuid4())
 
         )
+        print(order)
 
         # Redirect to the success page
         return redirect('order_success')

@@ -198,3 +198,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 LOGIN_REDIRECT_URL = 'userdash'
 LOGOUT_REDIRECT_URL = '/login'
+AUTH_USER_MODEL = 'User.CustomUser'

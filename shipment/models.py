@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from User.models import CustomUser as User
 
 # Create your models here.
 
@@ -37,7 +38,7 @@ class Shipment(models.Model):
 
 class Order(models.Model):
     # Recipient Information
-    user = models.ForeignKey(User, on_delete=models.CASCADE,default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -51,4 +52,4 @@ class Order(models.Model):
     tracking_number = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
     def __str__(self):
-        return f"{self.package_name} - {self.tracking_number}"
+        return f"{self.package_name} + '-' + {self.tracking_number}"

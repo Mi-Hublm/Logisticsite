@@ -35,7 +35,7 @@ def profile(request):
             user = request.user
             user.first_name = form.cleaned_data.get('first_name', user.first_name)
             user.last_name = form.cleaned_data.get('last_name', user.last_name)
-            user.username = form.cleaned_data.get('username', user.username)
+            user.user_name = form.cleaned_data.get('user_name', user.user_name)
             user.email = form.cleaned_data.get('email', user.email)
             # user.phone_number = form.cleaned_data.get('phone_number', user.phone_number)
 
@@ -50,7 +50,7 @@ def profile(request):
         initial_data = {
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,
-            'username': request.user.username,
+            'user_name': request.user.user_name,
             'email': request.user.email,
             # 'phone_number': request.user.phone_number,
         }
