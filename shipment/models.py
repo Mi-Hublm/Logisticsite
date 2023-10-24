@@ -23,8 +23,9 @@ class Shipment(models.Model):
     estimated_time = models.CharField(max_length=100, blank=False, null=False)
     total_cost = models.CharField(max_length=50, blank=False, null=False)
     items = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=2, choices=CHOICES)
+    status = models.CharField(max_length=2, choices=CHOICES, default='P')
     date = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.name) + ' - ' + str(self.status)
