@@ -33,11 +33,19 @@ INSTALLED_APPS = [
     "cloudinary",
     "cloudinary_storage",
     "rest_framework",
+    'rest_framework.authtoken',
     # 'social_django',
     'shipment',
     'User',
     'Payment',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +62,21 @@ SESSION_COOKIE_NAME = 'session_cookie'
 
 
 ROOT_URLCONF = 'logistics.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
+]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+
+LOGIN_URL = 'login'
+
 
 TEMPLATES = [
     {
@@ -171,3 +194,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 #     "fields": "id,name,email"
 # }
+
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = '/login'

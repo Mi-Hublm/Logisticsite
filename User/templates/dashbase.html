@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:ital@0;1&family=Rubik:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/duotone/style.css"
+        />
+        <title>{% block title %}Base{% endblock %}</title>
+      </head>
+<body>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">Transit Flow</a>
+      <div class="d-flex text-center">
+
+  {% if user.is_authenticated %}
+    <!-- Display content for authenticated users -->
+    <img src="{% static 'img/pro1.jpg' %}" class="rounded-circle mb-2 ms-3" width="30" height="30" alt="img">
+    <p class="text-center ms-3">{{ user.username }}</p>
+    {% else %}
+    <!-- Display content for anonymous users -->
+    <p>Please log in to access this content.</p>
+{% endif %}
+
+
+        {% if user.is_authenticated %}
+        <a href="/logout"><p class="text-center text-danger ms-3">Sign out</p></a>
+        {% else %}
+        <a href="login"><p class="text-center text-danger ms-3">Sign in</p></a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+<div class=" mt-4  pt-3 pb-3">
+  <div class="row">
+    <div class="col">
+
+      <div class="d-flex justify-content-lg-start me-0 ">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</button>
+          <a href="{% url 'order' %}"><button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false" >Order</button></a>
+          <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Track order</button>
+          <a href="{% url 'profile' %}"><button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button></a>
+          <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </div>
+    
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      {% block dashbase %}
+
+
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

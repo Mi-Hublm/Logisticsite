@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import pyotp
+from flask_cors import CORS
 import logging
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -20,7 +21,9 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+#use for production
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -31,6 +34,8 @@ argon2 = Argon2(app)
 jwt = JWTManager(app)
 db = SQLAlchemy(app)
 mail = Mail(app)
+CORS(app)
+
 
 limiter = Limiter(
     app,
@@ -96,7 +101,6 @@ def internal_server_error(error):
     return jsonify({"message": "Internal Server Error"}), 500
 
 @app.route("/api/authenticate", methods=["POST"])
-@limiter.limit("5 per minute")
 @csrf.exempt
 def authenticate():
     data = request.get_json()
@@ -117,6 +121,7 @@ def authenticate():
 
         access_token = create_access_token(identity=username)
         logger.info(f"Authentication successful for user {username}")
+        print(access_token)  # This line prints the access token
         return jsonify({"message": "Authentication successful", "access_token": access_token}), 200
 
     logger.warning(f"Authentication failed: Invalid credentials for user {username}")
@@ -148,13 +153,20 @@ def register():
     db.session.add(new_user)
     db.session.commit()
 
-    # Send email verification
-    # verification_token = generate_email_verification_token()
-    # send_verification_email(email, verification_token)
+    # Generate an access token for the new user
+    access_token = create_access_token(identity=new_user.id)
+
+    # Print the access token to the terminal
+    print(f'Access Token: {access_token}')
+
+    # Include the access token in the response
+    response_data = {
+        "message": "Registration successful. Check your email for verification instructions.",
+        "access_token": access_token
+    }
 
     logger.info(f"Registration successful for user {username}")
-    return jsonify({"message": "Registration successful. Check your email for verification instructions."}), 201
-
+    return jsonify(response_data), 201
 
 def generate_email_verification_token():
     # Generate a random and secure token
