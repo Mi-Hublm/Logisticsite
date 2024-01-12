@@ -12,8 +12,8 @@ urlpatterns = [
     path("protection", views.protection, name="protection"),
     path("bog_single<int:pk>", views.blog_single, name="single"),
     path("services", views.services, name="single"),
-    path("service_single<int:pk>", views.service_single, name="single"),
+    path("service_single<int:pk>", views.service_single, name="service_single"),
     path("project", views.project, name="single"),
-    path("project_single<int:pk>", views.project_single, name="single"),
+    path("project_single<int:pk>", views.project_single, name="project_single"),
     path("errorpage", views.errorpage, name="404"),
 ]

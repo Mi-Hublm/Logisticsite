@@ -815,7 +815,8 @@
 
         <div class="col-lg-5 ">
           <div class=" blog-content p-3 m-3">
-            <h3 id="content-1"> {{i.title}} </h3>
+            <!-- <h3 id="content-1"> {{i.title}} </h3> -->
+            <a href="{% url 'single' i.pk %}"><h3 id="content-1"> {{i.title}} </h3></a>
             <p id="content-2">{{i.decs}}</p>
 
             <!-- <ul>
